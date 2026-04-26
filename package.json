@@ -1,0 +1,63 @@
+{
+  "name": "@await-widget/runtime",
+  "version": "0.0.0",
+  "description": "TypeScript declarations for Await widgets.",
+  "license": "MIT",
+  "author": "LitoMore",
+  "type": "module",
+  "files": [
+    "runtime",
+    "types",
+    "ambient.d.ts",
+    "index.d.ts",
+    "global.d.ts",
+    "jsx-runtime.d.ts"
+  ],
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts"
+    },
+    "./global": {
+      "types": "./global.d.ts"
+    },
+    "./jsx-runtime": {
+      "types": "./jsx-runtime.d.ts"
+    },
+    "./runtime/await": {
+      "types": "./runtime/await.d.ts"
+    },
+    "./runtime/bridge": {
+      "types": "./runtime/bridge.d.ts"
+    },
+    "./types/global": {
+      "types": "./types/global.d.ts"
+    },
+    "./types/prop": {
+      "types": "./types/prop.d.ts"
+    },
+    "./types/jsx": {
+      "types": "./types/jsx.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "global": [
+        "global.d.ts"
+      ],
+      "jsx-runtime": [
+        "jsx-runtime.d.ts"
+      ],
+      "*": [
+        "index.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "tsc --noEmit -p test/tsconfig.json",
+    "pack:dry": "npm --cache .npm-cache pack --dry-run"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.2"
+  }
+}

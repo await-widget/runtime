@@ -1,0 +1,5 @@
+node_modules/
+test/node_modules/
+.npm-cache/
+*.tgz
+npm-debug.log*
