@@ -5,6 +5,13 @@
   "license": "MIT",
   "author": "LitoMore",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/await-widget/runtime.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "runtime",
     "types",
