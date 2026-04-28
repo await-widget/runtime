@@ -45,10 +45,6 @@ Await.define({
 });
 ```
 
-## Why `types` Is Still Needed
+## License
 
-Ordinary npm packages are not automatically loaded as global type packages. TypeScript only auto-loads packages under `node_modules/@types/*`, unless the project restricts `compilerOptions.types`.
-
-This package keeps the real module name as `await` while publishing under `@await-widget/runtime`, so projects should add `"types": ["@await-widget/runtime"]`.
-
-If this is later published as a true `@types/await` package, the global declarations can be auto-loaded in projects that do not override `compilerOptions.types`. `jsxImportSource` still has to be configured as `await`.
+MIT
