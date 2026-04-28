@@ -19,9 +19,6 @@
   "exports": {
     ".": {
       "types": "./types/index.d.ts"
-    },
-    "./jsx-runtime": {
-      "types": "./types/jsx-runtime.d.ts"
     }
   },
   "scripts": {
