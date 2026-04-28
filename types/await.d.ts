@@ -1,14 +1,9 @@
-/// <reference path="./types/global.d.ts" />
-/// <reference path="./types/prop.d.ts" />
-/// <reference path="./types/jsx.d.ts" />
-/// <reference path="./runtime/bridge.d.ts" />
-
+/// <reference path="./global.d.ts" />
+/// <reference path="./prop.d.ts" />
+/// <reference path="./jsx.d.ts" />
+/// <reference path="./bridge.d.ts" />
 declare module "await" {
-  export const Fragment: ({
-    children,
-  }: {
-    children: NativeView;
-  }) => NativeView;
+  export const Fragment: ({ children }: { children: NativeView }) => NativeView;
   export const jsx: (
     create: (props: Props) => NativeView,
     props: Props,
@@ -198,6 +193,6 @@ declare module "await" {
   ): NativeView;
 }
 
-declare module "await\/jsx-runtime" {
+declare module "await/jsx-runtime" {
   export { Fragment, jsx, jsx as jsxs } from "await";
 }

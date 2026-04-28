@@ -353,7 +353,7 @@ type LooseValues = {
 type Props = ID & Mods & LooseValues & { children?: NativeView };
 type ID = { id?: Encodable };
 type TextAlignment = "center" | "leading" | "trailing";
-type FontDesign = "monospaced" | "rounded" | "serif" | "default" | "";
+type FontDesign = "monospaced" | "rounded" | "serif" | "default";
 type FontWeight =
   | "black"
   | 900
@@ -372,17 +372,10 @@ type FontWeight =
   | "ultraLight"
   | 100
   | "regular"
-  | 400
-  | "";
+  | 400;
 
 type Material = "regular" | "thin" | "thick" | "ultraThin" | "ultraThick";
-type FontWidth =
-  | "compressed"
-  | "condensed"
-  | "standard"
-  | "expanded"
-  | ""
-  | number;
+type FontWidth = "compressed" | "condensed" | "standard" | "expanded" | number;
 type Interpolation = "none" | "low" | "medium" | "high";
 type Resizable = boolean | "stretch" | "tile";
 
@@ -391,24 +384,22 @@ type ScaleEffect =
   | { x?: number; y?: number; anchor?: UnitPoint }
   | { scale?: number; anchor?: UnitPoint }
   | number;
-type Font =
-  | {
-      name: string;
-      size: number;
-      wght?: number;
-      wdth?: number;
-      opsz?: number;
-      slnt?: number;
-      ital?: number;
+type Font = {
+  name: string;
+  size: number;
+  wght?: number;
+  wdth?: number;
+  opsz?: number;
+  slnt?: number;
+  ital?: number;
 
-      GRAD?: number;
-      HGHT?: number;
-      SOFT?: number;
+  GRAD?: number;
+  HGHT?: number;
+  SOFT?: number;
 
-      monospacedDigit?: boolean;
-      features?: string[] | string;
-    }
-  | "";
+  monospacedDigit?: boolean;
+  features?: string[] | string;
+};
 type Rotation3DEffect = {
   angle: number;
   x?: number;
@@ -429,6 +420,7 @@ type Shadow = {
   y?: number;
   blur?: number;
 };
+type Pattern = "dash" | "dashDot" | "dashDotDot" | "dot" | "solid";
 type BlendMode =
   | "normal"
   | "multiply"
@@ -498,11 +490,11 @@ type BaseMods = {
   disable?: boolean;
   drawingGroup?: boolean;
   fixedSize?: boolean | { horizontal?: boolean; vertical?: boolean };
-  font?: Font;
-  fontDesign?: FontDesign;
+  font?: Font | "";
+  fontDesign?: FontDesign | "";
   fontSize?: number;
-  fontWeight?: FontWeight;
-  fontWidth?: FontWidth;
+  fontWeight?: FontWeight | "";
+  fontWidth?: FontWidth | "";
   foreground?: ShapeStyle;
   frame?: Frame;
   geometryGroup?: boolean;
@@ -516,7 +508,7 @@ type BaseMods = {
   layoutPriority?: number;
   lineLimit?: number | "";
   lineSpacing?: number;
-  lineHeight?: LineHeight;
+  lineHeight?: LineHeight | "";
   luminanceToAlpha?: boolean;
   mask?: NativeView;
   maxHeight?: Dimension | boolean;
@@ -543,15 +535,17 @@ type BaseMods = {
   scaleEffect?: ScaleEffect;
   shadow?: Shadow;
   sides?: number;
-  strikethrough?: boolean;
+  strikethrough?: boolean | { isActive?: boolean; color?: Color };
   test?: unknown;
   textAlignment?: TextAlignment;
   tint?: ShapeStyle;
   tracking?: number;
-  transform?: number[];
+  transform?: [number, number, number, number, number, number];
   transition?: Transition;
   truncationMode?: "head" | "middle" | "tail";
-  underline?: boolean;
+  underline?:
+    | boolean
+    | { isActive?: boolean; pattern?: Pattern; color?: Color };
   width?: number;
   zIndex?: number;
 };

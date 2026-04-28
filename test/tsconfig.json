@@ -2,8 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "await",
-    "types": ["@await-widget/runtime"]
+    "jsxImportSource": "await"
   },
-  "files": ["widget.tsx"]
+  "files": ["../types/index.d.ts", "widget.tsx"]
 }
