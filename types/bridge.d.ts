@@ -30,6 +30,10 @@ type AwaitFoufouConfig = {
   image?: string;
   oauthToken?: string;
   oauthTokenSecret?: string;
+  consumerKey?: string;
+  consumerSecret?: string;
+  username?: string;
+  password?: string;
   parameters?: Record<string, string | number | boolean>;
 };
 export declare const AwaitNetwork: {
