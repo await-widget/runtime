@@ -145,6 +145,9 @@ export declare const Await: {
     config: AwaitDefineConfig<Intents, T>,
   ): AwaitDefineResult<Intents>;
 };
+export declare const AwaitLaunch: {
+  openApp(bundleId: string): any;
+};
 export declare const AwaitEnv: {
   readonly id: string;
   readonly tag: number;
@@ -153,6 +156,7 @@ export declare const AwaitEnv: {
 };
 type AwaitGlobal = typeof Await;
 type AwaitEnvGlobal = typeof AwaitEnv;
+type AwaitLaunchGlobal = typeof AwaitLaunch;
 type AwaitUIGlobal = typeof AwaitUI;
 type AwaitClipboardGlobal = typeof AwaitClipboard;
 type AwaitNetworkGlobal = typeof AwaitNetwork;
@@ -171,6 +175,7 @@ type SleepGlobal = typeof sleep;
 declare global {
   const Await: AwaitGlobal;
   const AwaitEnv: AwaitEnvGlobal;
+  const AwaitLaunch: AwaitLaunchGlobal;
   const AwaitUI: AwaitUIGlobal;
   const AwaitClipboard: AwaitClipboardGlobal;
   const AwaitNetwork: AwaitNetworkGlobal;

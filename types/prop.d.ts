@@ -466,7 +466,7 @@ type LineHeight =
   | "variable";
 
 type BaseMods = {
-  animation?: NativeAnimation | number;
+  animation?: NativeAnimation | number | "";
   aspectRatio?: AspectRatio;
   background?:
     | ShapeStyle
