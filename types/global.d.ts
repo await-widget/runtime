@@ -9,7 +9,7 @@ type AudioOption = "mix" | "duckOthers" | "solo";
 type ColorScheme = "light" | "dark";
 type RenderingMode = "fullColor" | "accented" | "vibrant";
 type TemplateRenderingMode = "original" | "template";
-type Update = Date | "end" | "never";
+type Update = Date | "end" | "rapid" | "never";
 type WidgetFamily =
   | "small"
   | "medium"
@@ -278,4 +278,5 @@ type TimelineContext = {
 type Timeline<T extends Record<string, unknown> = Record<string, unknown>> = {
   entries: Array<{ date: Date } & T>;
   update?: Update;
+  skipOnPlayingNote?: boolean;
 };
