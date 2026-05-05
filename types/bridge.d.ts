@@ -146,7 +146,7 @@ export declare const Await: {
   ): AwaitDefineResult<Intents>;
 };
 export declare const AwaitLaunch: {
-  openApp(bundleId: string): any;
+  start(bundleId: string): any;
 };
 export declare const AwaitEnv: {
   readonly id: string;
