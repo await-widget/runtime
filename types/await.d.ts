@@ -191,6 +191,13 @@ declare module "await" {
         children?: never;
       },
   ): NativeView;
+  export function Gif(
+    props: GifValue &
+      ID &
+      Mods & {
+        children: NativeView[];
+      },
+  ): NativeView;
 }
 
 declare module "await/jsx-runtime" {

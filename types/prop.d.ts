@@ -457,6 +457,9 @@ type CustomButtonStyle = {
   normal: NativeView;
 };
 
+type Duration = 2 | 4 | 6 | 10 | 12 | 20 | 30 | 60;
+type GifValue = { size: Size; duration: Duration };
+
 type LineHeight =
   | number
   | [type: "multiple" | "leading", value: number]
