@@ -1,7 +1,7 @@
-/// <reference path="./global.d.ts" />
+/// <reference path="./model.d.ts" />
+/// <reference path="./meta.d.ts" />
 /// <reference path="./prop.d.ts" />
 /// <reference path="./jsx.d.ts" />
-/// <reference path="./meta.d.ts" />
 /// <reference path="./bridge.d.ts" />
 declare module "await" {
   export const Fragment: ({ children }: { children: NativeView }) => NativeView;

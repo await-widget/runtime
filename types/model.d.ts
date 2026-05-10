@@ -1,15 +1,11 @@
-type Encodable =
-  | string
-  | number
-  | boolean
-  | undefined
-  | Encodable[]
-  | { [key: string]: Encodable };
 type AudioOption = "mix" | "duckOthers" | "solo";
+
 type ColorScheme = "light" | "dark";
+
 type RenderingMode = "fullColor" | "accented" | "vibrant";
-type TemplateRenderingMode = "original" | "template";
+
 type Update = Date | "end" | "rapid" | "never";
+
 type WidgetFamily =
   | "small"
   | "medium"
@@ -20,23 +16,18 @@ type WidgetFamily =
   | "accessoryCircular"
   | "accessoryRectangular"
   | "unknown";
-type Size = { width: number; height: number };
 
 type SingleNativeView =
+  | string
+  | number
+  | undefined
   | {
       kind: string;
       flat?: unknown[];
       children?: NativeView;
-    }
-  | string
-  | number
-  | undefined;
-type NativeView = SingleNativeView | NativeView[];
+    };
 
-type IntentInfo = {
-  name: string;
-  args: Encodable[];
-};
+type NativeView = SingleNativeView | NativeView[];
 
 type AudioConfig = {
   soundFont?: string;
@@ -118,7 +109,10 @@ type AwaitWeatherDaily = {
 };
 
 type AwaitWeatherResult = {
-  location: { latitude: number; longitude: number };
+  location: {
+    latitude: number;
+    longitude: number;
+  };
   current: AwaitWeatherCurrent;
   hourly: AwaitWeatherHourly[];
   daily: AwaitWeatherDaily[];
@@ -261,14 +255,12 @@ type AwaitAlarmScheduleConfig = {
 };
 
 type WidgetEntry<T extends Record<string, unknown> = Record<string, unknown>> =
-  {
-    colorScheme: ColorScheme;
-    renderingMode: RenderingMode;
-    size: Size;
-    family: WidgetFamily;
-  } & {
-    date: Date;
-  } & T;
+  TimelineContext &
+    T & {
+      date: Date;
+      colorScheme: ColorScheme;
+      renderingMode: RenderingMode;
+    };
 
 type TimelineContext = {
   size: Size;

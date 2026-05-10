@@ -211,10 +211,32 @@ type Alignment =
 
 type Dimension = "max" | number;
 
+type Size = {
+  width: number;
+  height: number;
+};
+
+type TemplateRenderingMode = "original" | "template";
+
 type AspectRatio =
   | "fill"
   | "fit"
   | [aspectRatio: number, contentMode: "fill" | "fit"];
+
+type IntentInfo = {
+  name: string;
+  args: Encodable[];
+};
+
+type Encodable =
+  | string
+  | number
+  | boolean
+  | undefined
+  | Encodable[]
+  | {
+      [key: string]: Encodable;
+    };
 
 type ID = {
   id?: Encodable;

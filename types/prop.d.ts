@@ -1,12 +1,14 @@
 type Props = Record<string, unknown>;
 
 type VStackValue = {
+  /** Default 0. */
   spacing?: number;
   /** Horizontal alignment for child views. */
   alignment?: HorizontalAlignment;
 };
 
 type HStackValue = {
+  /** Default 0. */
   spacing?: number;
   /** Vertical alignment for child views. */
   alignment?: VerticalAlignment;
@@ -29,6 +31,7 @@ type ButtonValue = {
 };
 
 type ShapeValue = {
+  /** Default black on light theme, white on dark theme. */
   fill?: ShapeStyle;
   /** Only centered strokes are supported. */
   stroke?: {
@@ -56,6 +59,7 @@ type ShapeValue = {
 
 type RoundedRectangleValue = {
   rectRadius?: Dimension;
+  /** Default `continuous`. */
   style?: CornerRadiusStyle;
 };
 
