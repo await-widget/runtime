@@ -1,4 +1,4 @@
 declare namespace JSX {
-  type Element = NativeView;
-  type IntrinsicElements = never;
+	type Element = NativeView;
+	type IntrinsicElements = never;
 }

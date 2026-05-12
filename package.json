@@ -22,10 +22,12 @@
     }
   },
   "scripts": {
+    "format:types": "xo --fix types/*.d.ts",
     "test": "tsc --noEmit -p test/tsconfig.json",
     "pack:dry": "npm --cache .npm-cache pack --dry-run"
   },
   "devDependencies": {
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "xo": "^2.0.2"
   }
 }
