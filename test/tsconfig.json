@@ -1,8 +1,11 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "await"
-  },
-  "files": ["../types/index.d.ts", "widget.tsx"]
+	"compilerOptions": {
+		"strict": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "await"
+	},
+	"files": [
+		"../types/index.d.ts",
+		"widget.tsx"
+	]
 }
