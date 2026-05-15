@@ -140,6 +140,22 @@ type GifValue = {
 	duration: GifDuration;
 };
 
+type TickerValue = {
+	size: Size;
+	style: TickerStyle;
+};
+
+type FlipValue = {
+	index: number;
+	delta: number;
+	curr: NativeView;
+	prev: NativeView;
+	perspective?: number;
+	shadowOpacity?: number;
+	leadingHidden?: boolean;
+	trailingHidden?: boolean;
+};
+
 type Mods = {
 	[K in keyof BaseMods]?: BaseMods[K];
 } & {

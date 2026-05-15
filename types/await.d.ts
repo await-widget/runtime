@@ -192,8 +192,29 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	export function VFlip(
+		props: FlipValue &
+			ID &
+			Mods & {
+				children?: never;
+			},
+	): NativeView;
+	export function HFlip(
+		props: FlipValue &
+			ID &
+			Mods & {
+				children?: never;
+			},
+	): NativeView;
 	export function Gif(
 		props: GifValue &
+			ID &
+			Mods & {
+				children: NativeView[];
+			},
+	): NativeView;
+	export function Ticker(
+		props: TickerValue &
 			ID &
 			Mods & {
 				children: NativeView[];

@@ -384,6 +384,8 @@ type CustomButtonStyle = {
 
 type GifDuration = 2 | 4 | 6 | 10 | 12 | 20 | 30 | 60;
 
+type TickerStyle = 'minute' | 'second' | 'hour12' | 'hour24';
+
 type LineHeight =
 	| number
 	| 'loose'
