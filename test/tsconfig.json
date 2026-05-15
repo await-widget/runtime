@@ -6,6 +6,6 @@
 	},
 	"files": [
 		"../types/index.d.ts",
-		"widget.tsx"
+		"test.tsx"
 	]
 }
