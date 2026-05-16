@@ -13,3 +13,4 @@
 3. The publishing commit should be always version number change only, and commit message is in x.x.x format (without prefixed "v").
 4. After committing, create a version tag vx.x.x (has prefixed "v") on the version change commit.
 5. Push the version change commit, and push the tag to trigger the OIDC publishing workflow.
+6. After the new runtime version is published, search the sibling `../skills` directory and update every skill that depends on `@await-widget/runtime` to use the newly published version.
