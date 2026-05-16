@@ -155,6 +155,7 @@ type AwaitNowPlayingInfo = {
 	title?: string;
 	artistName?: string;
 	albumTitle?: string;
+	duration?: number;
 	artworkURL?: string;
 	maximumWidth?: number;
 	maximumHeight?: number;
