@@ -156,6 +156,7 @@ type AwaitNowPlayingInfo = {
 	artistName?: string;
 	albumTitle?: string;
 	duration?: number;
+	isFavorite?: boolean;
 	artworkURL?: string;
 	maximumWidth?: number;
 	maximumHeight?: number;
@@ -166,7 +167,12 @@ type AwaitNowPlayingInfo = {
 	quaternaryTextColor?: Color;
 };
 
-type AwaitMusicPlayerCommand = 'start' | 'toggle' | 'next' | 'previous';
+type AwaitMusicPlayerCommand =
+	| 'start'
+	| 'toggle'
+	| 'next'
+	| 'previous'
+	| 'favorite';
 
 type AwaitMediaPlayConfig =
 	| {
@@ -191,6 +197,12 @@ type AwaitMediaPlayConfig =
 			type?: 'discovery' | 'user';
 			id?: string;
 	  };
+
+type AwaitMediaFavoriteConfig = {
+	rating?: -1 | 0 | 1;
+};
+
+type AwaitMediaCommandConfig = AwaitMediaPlayConfig | AwaitMediaFavoriteConfig;
 
 type AwaitCalendarConfig = {
 	start?: Date;

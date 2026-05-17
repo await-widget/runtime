@@ -69,7 +69,7 @@ export declare const AwaitMedia: {
 	nowPlayingMedia(config?: AwaitNowPlayingConfig): Promise<AwaitNowPlayingInfo>;
 	mediaPlayerCommand(
 		command: AwaitMusicPlayerCommand,
-		config?: AwaitMediaPlayConfig,
+		config?: AwaitMediaCommandConfig,
 	): Promise<void>;
 };
 export declare const AwaitStore: {
