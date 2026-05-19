@@ -2,6 +2,8 @@ type CornerRadiusStyle = 'circular' | 'continuous';
 
 type TimeStyle = 'time' | 'date' | 'relative' | 'offset' | 'timer';
 
+type ProgressViewStyle = 'automatic' | 'linear' | 'circular';
+
 type Material = 'regular' | 'thin' | 'thick' | 'ultraThin' | 'ultraThick';
 
 type ShapeStyle =

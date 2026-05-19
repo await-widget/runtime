@@ -65,6 +65,13 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	export function ProgressView(
+		props: ProgressViewValue &
+			ID &
+			Mods & {
+				children?: never;
+			},
+	): NativeView;
 	export function Image(
 		props: ImageValue &
 			ID &

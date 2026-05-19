@@ -124,6 +124,12 @@ type TimeValue = {
 	style?: TimeStyle;
 };
 
+type ProgressViewValue = {
+	value: number | [start: Date, end: Date];
+	/** Default true. Only applies when value is a date range. */
+	countsDown?: boolean;
+};
+
 type SvgValue = {
 	/** For example, `img.png`, `path/img.png`, or `https://example.com/img.png`. */
 	url?: string;
@@ -225,6 +231,7 @@ type BaseMods = {
 	padding?: Padding | boolean;
 	pixelPerfectCenter?: boolean | Point;
 	position?: Point;
+	progressViewStyle?: ProgressViewStyle;
 	reverseMask?: NativeView;
 	rotation3DEffect?: Rotation3DEffect;
 	rotationEffect?: RotationEffect;

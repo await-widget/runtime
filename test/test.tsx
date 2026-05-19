@@ -8,6 +8,7 @@ import {
 	Color,
 	Text,
 	Time,
+	ProgressView,
 	Image,
 	Icon,
 	Svg,
@@ -41,6 +42,8 @@ const titleSize = 18;
 const accentColor = 'blue';
 
 function widget(entry: WidgetEntry<TestEntry>) {
+	const start = new Date(Date.now() - 30_000);
+	const end = new Date(Date.now() + 90_000);
 	const count = AwaitStore.num('count', 0);
 	const name = AwaitStore.string('name');
 	const items = AwaitStore.array<string>('items');
@@ -115,6 +118,10 @@ function widget(entry: WidgetEntry<TestEntry>) {
 						<Icon value='star' foreground='yellow' />
 						<Image url='https://example.com/img.png' resizable aspectRatio='fit' interpolation='high' />
 						<Time date={entry.date} style='time' />
+						<ProgressView value={0.4} progressViewStyle='linear' />
+						<ProgressView value={[start, end]} progressViewStyle='automatic' />
+						<ProgressView value={[start, end]} countsDown={false} progressViewStyle='circular' />
+						<ProgressView value={[end, start]} />
 					</HStack>
 					<Link url='https://example.com'>
 						<Text value={`${entry.family}:${entry.renderingMode}`} underline />
