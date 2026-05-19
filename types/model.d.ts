@@ -11,7 +11,6 @@ type WidgetFamily =
 	| 'medium'
 	| 'large'
 	| 'extraLarge'
-	| 'extraLargePortrait'
 	| 'accessoryInline'
 	| 'accessoryCircular'
 	| 'accessoryRectangular'
