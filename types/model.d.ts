@@ -171,7 +171,9 @@ type AwaitMusicPlayerCommand =
 	| 'toggle'
 	| 'next'
 	| 'previous'
-	| 'favorite';
+	| 'favorite'
+	| 'clearRating'
+	| 'dislike';
 
 type AwaitMediaPlayConfig =
 	| {
@@ -196,12 +198,6 @@ type AwaitMediaPlayConfig =
 			type?: 'discovery' | 'user';
 			id?: string;
 	  };
-
-type AwaitMediaFavoriteConfig = {
-	rating?: -1 | 0 | 1;
-};
-
-type AwaitMediaCommandConfig = AwaitMediaPlayConfig | AwaitMediaFavoriteConfig;
 
 type AwaitCalendarConfig = {
 	start?: Date;
