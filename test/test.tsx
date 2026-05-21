@@ -81,8 +81,8 @@ function widget(entry: WidgetEntry<TestEntry>) {
 	void AwaitReminder.get({type: 'incomplete', limit: 3});
 	void AwaitAlarm.schedule({title: 'Focus', duration: 60, tint: accentColor});
 	AwaitAlarm.cancel('alarm-id');
-	void AwaitMedia.nowPlayingMedia({artworkSize: 128});
-	void AwaitMedia.mediaPlayerCommand('toggle', {source: 'song', query: 'Await', limit: 1});
+	void AwaitMusic.nowPlaying({artworkSize: 128});
+	void AwaitMusic.playerCommand('toggle', {source: 'song', query: 'Await', limit: 1});
 	void AwaitAudio.buildSoundFont({
 		savePath: 'sound.sf2',
 		mediaFiles: ['note.wav'],

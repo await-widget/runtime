@@ -1,33 +1,33 @@
 {
-  "name": "@await-widget/runtime",
-  "version": "0.0.12",
-  "description": "TypeScript declarations for Await widgets.",
-  "license": "MIT",
-  "author": "LitoMore",
-  "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/await-widget/runtime.git"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "types/*.d.ts"
-  ],
-  "types": "./types/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./types/index.d.ts"
-    }
-  },
-  "scripts": {
-    "format:types": "xo --fix types/*.d.ts",
-    "test": "tsc --noEmit -p test/tsconfig.json",
-    "pack:dry": "npm --cache .npm-cache pack --dry-run"
-  },
-  "devDependencies": {
-    "typescript": "^6.0.2",
-    "xo": "^2.0.2"
-  }
+	"name": "@await-widget/runtime",
+	"version": "0.0.13",
+	"description": "TypeScript declarations for Await widgets.",
+	"license": "MIT",
+	"author": "LitoMore",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/await-widget/runtime.git"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"types/*.d.ts"
+	],
+	"types": "./types/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./types/index.d.ts"
+		}
+	},
+	"scripts": {
+		"format:types": "xo --fix types/*.d.ts",
+		"test": "tsc --noEmit -p test/tsconfig.json",
+		"pack:dry": "npm --cache .npm-cache pack --dry-run"
+	},
+	"devDependencies": {
+		"typescript": "^6.0.2",
+		"xo": "^2.0.2"
+	}
 }
