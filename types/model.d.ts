@@ -141,6 +141,26 @@ type AwaitNowPlayingConfig = {
 	artworkSize?: number;
 };
 
+type AwaitMusicSource =
+	| {
+			type: 'song';
+	  }
+	| {
+			type: 'artist';
+			id: string;
+			name: string;
+	  }
+	| {
+			type: 'album';
+			id: string;
+			name: string;
+	  }
+	| {
+			type: 'station';
+			id: string;
+			name: string;
+	  };
+
 type AwaitNowPlayingInfo = {
 	state?:
 		| 'playing'
@@ -149,7 +169,7 @@ type AwaitNowPlayingInfo = {
 		| 'interrupted'
 		| 'seekingForward'
 		| 'seekingBackward';
-	sourceConfig?: AwaitMediaPlayConfig;
+	source?: AwaitMusicSource;
 	id?: string;
 	title?: string;
 	artistName?: string;
@@ -175,7 +195,7 @@ type AwaitMusicPlayerCommand =
 	| 'clearRating'
 	| 'dislike';
 
-type AwaitMediaPlayConfig =
+type AwaitMusicPlayConfig =
 	| {
 			source: 'song';
 			id?: string;
@@ -184,6 +204,14 @@ type AwaitMediaPlayConfig =
 			shuffle?: boolean;
 			loop?: boolean;
 			offset?: number;
+	  }
+	| {
+			source: 'artist';
+			id?: string;
+			query?: string;
+			limit?: number;
+			shuffle?: boolean;
+			loop?: boolean;
 	  }
 	| {
 			source: 'album';

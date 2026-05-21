@@ -65,11 +65,11 @@ export declare const AwaitAlarm: {
 	schedule(config: AwaitAlarmScheduleConfig): Promise<string>;
 	cancel(id: string): any;
 };
-export declare const AwaitMedia: {
-	nowPlayingMedia(config?: AwaitNowPlayingConfig): Promise<AwaitNowPlayingInfo>;
-	mediaPlayerCommand(
+export declare const AwaitMusic: {
+	nowPlaying(config?: AwaitNowPlayingConfig): Promise<AwaitNowPlayingInfo>;
+	playerCommand(
 		command: AwaitMusicPlayerCommand,
-		config?: AwaitMediaPlayConfig,
+		config?: AwaitMusicPlayConfig,
 	): Promise<void>;
 };
 export declare const AwaitStore: {
@@ -167,7 +167,7 @@ type AwaitCalendarGlobal = typeof AwaitCalendar;
 type AwaitReminderGlobal = typeof AwaitReminder;
 type AwaitSystemGlobal = typeof AwaitSystem;
 type AwaitAlarmGlobal = typeof AwaitAlarm;
-type AwaitMediaGlobal = typeof AwaitMedia;
+type AwaitMusicGlobal = typeof AwaitMusic;
 type AwaitStoreGlobal = typeof AwaitStore;
 type AwaitFileGlobal = typeof AwaitFile;
 type AwaitAudioGlobal = typeof AwaitAudio;
@@ -186,7 +186,7 @@ declare global {
 	const AwaitReminder: AwaitReminderGlobal;
 	const AwaitSystem: AwaitSystemGlobal;
 	const AwaitAlarm: AwaitAlarmGlobal;
-	const AwaitMedia: AwaitMediaGlobal;
+	const AwaitMusic: AwaitMusicGlobal;
 	const AwaitStore: AwaitStoreGlobal;
 	const AwaitFile: AwaitFileGlobal;
 	const AwaitAudio: AwaitAudioGlobal;
