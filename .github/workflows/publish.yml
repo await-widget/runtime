@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      ref:
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -13,7 +18,13 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - run: |
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "${CHECKOUT_REF}"
+          git checkout --detach FETCH_HEAD
+        env:
+          CHECKOUT_REF: ${{ inputs.ref || github.ref }}
 
       - uses: actions/setup-node@v6
         with:
