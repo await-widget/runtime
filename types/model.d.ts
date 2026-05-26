@@ -203,7 +203,6 @@ type AwaitMusicPlayConfig =
 			limit?: number;
 			shuffle?: boolean;
 			loop?: boolean;
-			offset?: number;
 	  }
 	| {
 			source: 'artist';
