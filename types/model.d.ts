@@ -188,6 +188,7 @@ type AwaitNowPlayingInfo = {
 
 type AwaitMusicPlayerCommand =
 	| 'start'
+	| 'stop'
 	| 'toggle'
 	| 'next'
 	| 'previous'
