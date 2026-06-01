@@ -1,6 +1,6 @@
 {
 	"name": "@await-widget/runtime",
-	"version": "0.0.14",
+	"version": "0.0.15",
 	"description": "TypeScript declarations for Await widgets.",
 	"license": "MIT",
 	"author": "LitoMore",
