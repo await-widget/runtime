@@ -121,6 +121,17 @@ type AwaitHealthInfo = {
 	stepCount?: number;
 	distanceWalkingRunning?: number;
 	flightsClimbed?: number;
+	fitness?: {
+		activeEnergyBurned?: number;
+		activeEnergyBurnedGoal?: number;
+		exerciseTime?: number;
+		exerciseTimeGoal?: number;
+		standHours?: number;
+		standHoursGoal?: number;
+	};
+	heartRate?: number;
+	restingHeartRate?: number;
+	oxygenSaturation?: number;
 };
 
 type AwaitLocationConfig = {
