@@ -75,7 +75,6 @@ function widget(entry: WidgetEntry<TestEntry>) {
 	});
 	void AwaitNetwork.fanfou('/statuses/home_timeline', {parameters: {count: 1}});
 	void AwaitWeather.get({latitude: 0, longitude: 0});
-	void AwaitHealth.get();
 	void AwaitLocation.get({desiredAccuracyMeters: 100, timeoutSeconds: 2});
 	void AwaitCalendar.get({start: new Date(), limit: 3});
 	void AwaitReminder.get({type: 'incomplete', limit: 3});
@@ -170,17 +169,19 @@ function open(url: string) {
 	AwaitLaunch.start(url);
 }
 
+function widgetTimeline() {
+	return {
+		entries: [
+			{date: new Date(), message: 'Hello', phase: 0},
+			{date: new Date(Date.now() + 60_000), message: 'Hello', phase: 1},
+		],
+		update: 'never' as const,
+		skipOnPlayingNote: true,
+	};
+}
+
 const app = Await.define({
 	widget,
-	widgetTimeline(context) {
-		return {
-			entries: [
-				{date: new Date(), message: context.family, phase: 0},
-				{date: new Date(Date.now() + 60_000), message: context.family, phase: 1},
-			],
-			update: 'rapid',
-			skipOnPlayingNote: true,
-		};
-	},
+	widgetTimeline,
 	widgetIntents: {tap, open},
 });
