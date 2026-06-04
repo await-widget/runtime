@@ -343,9 +343,14 @@ type AwaitAlarmScheduleConfig = {
 	tint?: Color;
 };
 
+type WidgetEntryData<T extends Record<string, unknown>> = Omit<
+	T,
+	keyof TimelineContext | 'date' | 'colorScheme' | 'renderingMode'
+>;
+
 type WidgetEntry<T extends Record<string, unknown> = Record<string, unknown>> =
 	TimelineContext &
-		T & {
+		WidgetEntryData<T> & {
 			date: Date;
 			colorScheme: ColorScheme;
 			renderingMode: RenderingMode;

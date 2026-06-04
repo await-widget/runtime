@@ -119,7 +119,7 @@ export declare const AwaitUI: {
 	readonly displayScale: number;
 	haptic(type: string): void;
 };
-type AwaitDefineConfig<Intents, T extends Record<string, unknown>> = {
+type AwaitDefineConfig<T extends Record<string, unknown>, Intents> = {
 	widget: (entry: WidgetEntry<T>) => NativeView;
 	widgetTimeline?: (
 		context: TimelineContext,
@@ -141,10 +141,13 @@ type AwaitDefineResult<Intents> = {
 		? (...args: IntentArguments) => IntentInfo
 		: never;
 };
+type AwaitDefineShape = {
+	widgetIntents?: Record<string, (...args: any[]) => void>;
+};
 export declare const Await: {
-	define<Intents, T extends Record<string, unknown>>(
-		config: AwaitDefineConfig<Intents, T>,
-	): AwaitDefineResult<Intents>;
+	define<T extends Record<string, unknown>, Config extends AwaitDefineShape>(
+		config: Config & AwaitDefineConfig<T, Config['widgetIntents']>,
+	): AwaitDefineResult<Config['widgetIntents']>;
 };
 export declare const AwaitLaunch: {
 	start(bundleId: string): any;
