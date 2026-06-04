@@ -117,21 +117,63 @@ type AwaitWeatherResult = {
 	daily: AwaitWeatherDaily[];
 };
 
+type AwaitHealthConfig = {
+	start: Date;
+	end: Date;
+};
+
+type AwaitHealthFitnessInfo = {
+	activeEnergyBurned?: number;
+	activeEnergyBurnedGoal?: number;
+	exerciseTime?: number;
+	exerciseTimeGoal?: number;
+	standHours?: number;
+	standHoursGoal?: number;
+};
+
+type AwaitHealthQuantitySample = {
+	value: number;
+	startDate: Date;
+	endDate: Date;
+};
+
+type AwaitHealthSleepAnalysisValue =
+	| 'inBed'
+	| 'awake'
+	| 'asleepCore'
+	| 'asleepDeep'
+	| 'asleepREM'
+	| 'asleepUnspecified';
+
+type AwaitHealthSleepAnalysisSample = {
+	value: AwaitHealthSleepAnalysisValue;
+	startDate: Date;
+	endDate: Date;
+};
+
 type AwaitHealthInfo = {
 	stepCount?: number;
 	distanceWalkingRunning?: number;
 	flightsClimbed?: number;
-	fitness?: {
-		activeEnergyBurned?: number;
-		activeEnergyBurnedGoal?: number;
-		exerciseTime?: number;
-		exerciseTimeGoal?: number;
-		standHours?: number;
-		standHoursGoal?: number;
-	};
+	fitness?: AwaitHealthFitnessInfo;
 	heartRate?: number;
 	restingHeartRate?: number;
 	oxygenSaturation?: number;
+};
+
+type AwaitHealthRangeFitnessInfo = AwaitHealthFitnessInfo & {
+	date: Date;
+};
+
+type AwaitHealthRangeInfo = {
+	stepCount?: AwaitHealthQuantitySample[];
+	distanceWalkingRunning?: AwaitHealthQuantitySample[];
+	flightsClimbed?: AwaitHealthQuantitySample[];
+	fitness?: AwaitHealthRangeFitnessInfo[];
+	heartRate?: AwaitHealthQuantitySample[];
+	restingHeartRate?: AwaitHealthQuantitySample[];
+	oxygenSaturation?: AwaitHealthQuantitySample[];
+	sleepAnalysis?: AwaitHealthSleepAnalysisSample[];
 };
 
 type AwaitLocationConfig = {

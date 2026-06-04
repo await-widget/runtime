@@ -48,6 +48,7 @@ export declare const AwaitWeather: {
 };
 export declare const AwaitHealth: {
 	get(): Promise<AwaitHealthInfo | undefined>;
+	get(config: AwaitHealthConfig): Promise<AwaitHealthRangeInfo | undefined>;
 };
 export declare const AwaitLocation: {
 	get(config?: AwaitLocationConfig): Promise<AwaitLocationInfo | undefined>;
