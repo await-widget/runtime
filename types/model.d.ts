@@ -173,6 +173,8 @@ type AwaitHealthRangeInfo = {
 	heartRate?: AwaitHealthQuantitySample[];
 	restingHeartRate?: AwaitHealthQuantitySample[];
 	oxygenSaturation?: AwaitHealthQuantitySample[];
+	respiratoryRate?: AwaitHealthQuantitySample[];
+	appleSleepingWristTemperature?: AwaitHealthQuantitySample[];
 	sleepAnalysis?: AwaitHealthSleepAnalysisSample[];
 };
 
