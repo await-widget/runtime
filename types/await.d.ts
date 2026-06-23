@@ -72,6 +72,13 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	export function Gauge(
+		props: GaugeValue &
+			ID &
+			Mods & {
+				children?: never;
+			},
+	): NativeView;
 	export function Image(
 		props: ImageValue &
 			ID &

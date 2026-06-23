@@ -152,6 +152,20 @@ type AwaitHealthSleepAnalysisSample = {
 	endDate: Date;
 };
 
+type AwaitHealthMenstrualFlowValue =
+	| 'unspecified'
+	| 'light'
+	| 'medium'
+	| 'heavy'
+	| 'none';
+
+type AwaitHealthMenstrualFlowSample = {
+	value: AwaitHealthMenstrualFlowValue;
+	startDate: Date;
+	endDate: Date;
+	cycleStart: boolean;
+};
+
 type AwaitHealthInfo = {
 	stepCount?: number;
 	distanceWalkingRunning?: number;
@@ -177,6 +191,7 @@ type AwaitHealthRangeInfo = {
 	respiratoryRate?: AwaitHealthQuantitySample[];
 	appleSleepingWristTemperature?: AwaitHealthQuantitySample[];
 	sleepAnalysis?: AwaitHealthSleepAnalysisSample[];
+	menstrualFlow?: AwaitHealthMenstrualFlowSample[];
 };
 
 type AwaitLocationConfig = {

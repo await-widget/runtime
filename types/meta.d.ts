@@ -1,5 +1,13 @@
 type CornerRadiusStyle = 'circular' | 'continuous';
 
+type GaugeStyle =
+	| 'accessoryCircular'
+	| 'accessoryCircularCapacity'
+	| 'accessoryLinear'
+	| 'accessoryLinearCapacity'
+	| 'linearCapacity'
+	| 'automatic';
+
 type TimeStyle = 'time' | 'date' | 'relative' | 'offset' | 'timer';
 
 type ProgressViewStyle = 'automatic' | 'linear' | 'circular';

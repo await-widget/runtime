@@ -102,6 +102,11 @@ type TextValue = {
 	value?: Encodable;
 };
 
+type GaugeValue = {
+	/** Number value in range 0~1. */
+	value?: number;
+};
+
 type ImageValue = {
 	/** Local or remote path such as `img.png` `path/img.png` `https://example.com/img.png` */
 	url?: string;
@@ -200,6 +205,7 @@ type BaseMods = {
 	fontWidth?: FontWidth | '';
 	foreground?: ShapeStyle;
 	frame?: Frame;
+	gaugeStyle?: GaugeStyle;
 	geometryGroup?: boolean;
 	grayscale?: number;
 	height?: number;
