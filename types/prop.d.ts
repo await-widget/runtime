@@ -217,6 +217,7 @@ type BaseMods = {
 	maxHeight?: Dimension | boolean;
 	maxSides?: Dimension | boolean;
 	maxWidth?: Dimension | boolean;
+	/** There is a known issue where minimumScaleFactor may stop working when lineHeight is used. */
 	minimumScaleFactor?: number;
 	monospaced?: boolean;
 	monospacedDigit?: boolean;
