@@ -156,6 +156,10 @@ type TickerValue = {
 	style: TickerStyle;
 };
 
+type ClockSecondValue = {
+	size: Size;
+};
+
 type FlipValue = {
 	index: number;
 	delta: number;

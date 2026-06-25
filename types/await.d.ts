@@ -227,6 +227,15 @@ declare module 'await' {
 				children: NativeView[];
 			},
 	): NativeView;
+	/** This is a fallback for Ticker on iOS 18 and earlier. */
+	export function ClockSecond(
+		props: ClockSecondValue &
+			ID &
+			Mods & {
+				children: NativeView[];
+			},
+	): NativeView;
+	/** Available on iOS 26 and later. */
 	export function Ticker(
 		props: TickerValue &
 			ID &
