@@ -23,6 +23,10 @@ function main() {
 function startDevServer(args) {
 	const options = parseDevArgs(args);
 	const root = path.resolve(options.root);
+	if (!isSubdirectory(root)) {
+		printHelp();
+		process.exit(1);
+	}
 	const stats = fs.statSync(root);
 	if (!stats.isDirectory()) {
 		throw new Error(`${root} is not a directory`);
@@ -42,7 +46,7 @@ function startDevServer(args) {
 }
 
 function parseDevArgs(args) {
-	let root = ".";
+	let root;
 	let port = defaultPort;
 	for (let index = 0; index < args.length; index += 1) {
 		const arg = args[index];
@@ -57,7 +61,16 @@ function parseDevArgs(args) {
 		}
 		root = arg;
 	}
+	if (!root) {
+		printHelp();
+		process.exit(1);
+	}
 	return {root, port};
+}
+
+function isSubdirectory(root) {
+	const relativePath = path.relative(process.cwd(), root);
+	return relativePath !== "" && !relativePath.startsWith("..") && !path.isAbsolute(relativePath);
 }
 
 function handleRequest({request, response, root, token}) {
@@ -297,7 +310,12 @@ function urlForRequest(request, token) {
 
 function printHelp() {
 	console.log(`Usage:
-  await-widget dev [directory] [--port ${defaultPort}]
+  await-widget dev <widget-directory> [--port ${defaultPort}]
+
+Example:
+  await-widget dev MyWidget
+
+Pass a widget subdirectory, not the current package directory.
 `);
 }
 
