@@ -249,7 +249,9 @@ function printServerUrls(port, token) {
 	const recommended = networkUrls.find(({address}) => isPrivateIPv4(address)) ?? networkUrls[0];
 	if (recommended) {
 		console.log("Paste this URL into Await on iPhone:");
+		console.log("");
 		console.log(recommended.url);
+		console.log("");
 	}
 	const otherUrls = [
 		{url: `http://127.0.0.1:${port}?token=${token}`},
