@@ -313,7 +313,7 @@ function printHelp() {
   await-widget dev <widget-directory> [--port ${defaultPort}]
 
 Example:
-  await-widget dev MyWidget
+  await-widget dev YourWidget
 
 Pass a widget subdirectory, not the current package directory.
 `);
