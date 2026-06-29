@@ -13,6 +13,7 @@
 		"access": "public"
 	},
 	"files": [
+		"bin/*.js",
 		"types/*.d.ts"
 	],
 	"types": "./types/index.d.ts",
@@ -24,10 +25,14 @@
 	"scripts": {
 		"format:types": "xo --fix types/*.d.ts",
 		"test": "tsc --noEmit -p test/tsconfig.json",
-		"pack:dry": "npm --cache .npm-cache pack --dry-run"
+		"pack:dry": "npm --cache .npm-cache pack --dry-run",
+		"cli:test": "node bin/await-widget.js --help"
 	},
 	"devDependencies": {
 		"typescript": "^6.0.2",
 		"xo": "^2.0.2"
+	},
+	"bin": {
+		"await-widget": "bin/await-widget.js"
 	}
 }
