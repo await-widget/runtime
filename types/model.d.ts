@@ -206,6 +206,12 @@ type AwaitLocationInfo = {
 	altitudeMeters?: number;
 	speedMetersPerSecond?: number;
 	courseDegrees?: number;
+	country?: string;
+	administrativeArea?: string;
+	locality?: string;
+	subLocality?: string;
+	thoroughfare?: string;
+	subThoroughfare?: string;
 };
 
 type AwaitNowPlayingConfig = {
