@@ -564,13 +564,13 @@ function zipFiles(files) {
 
 const appCommands = [
 	{
-		name: 'list_app_widgets',
+		name: 'list-app-widgets',
 		usage: 'list-app-widgets',
 		description: 'List Await widgets currently stored in the Await app.',
 		inputSchema: {type: 'object', properties: {}},
 	},
 	{
-		name: 'open_widget_detail',
+		name: 'open-widget-detail',
 		usage: 'open-widget-detail --widget-id <id>',
 		description: 'Open a widget detail page in the Await app.',
 		inputSchema: {
@@ -580,13 +580,13 @@ const appCommands = [
 		},
 	},
 	{
-		name: 'open_syncing_widget_detail',
+		name: 'open-syncing-widget-detail',
 		usage: 'open-syncing-widget-detail',
 		description: 'Open the widget detail page for the widget currently syncing from this computer.',
 		inputSchema: {type: 'object', properties: {}},
 	},
 	{
-		name: 'set_preview_mode',
+		name: 'set-preview-mode',
 		usage: 'set-preview-mode --mode <small|medium|large|extraLarge> [--widget-id <id>]',
 		description: 'Set the current widget detail preview mode.',
 		inputSchema: {
@@ -599,7 +599,7 @@ const appCommands = [
 		},
 	},
 	{
-		name: 'capture_current_preview',
+		name: 'capture-current-preview',
 		usage: 'capture-current-preview [--widget-id <id>]',
 		description: 'Capture the currently visible widget preview as PNG.',
 		inputSchema: {
@@ -608,7 +608,7 @@ const appCommands = [
 		},
 	},
 	{
-		name: 'get_widget_status',
+		name: 'get-widget-status',
 		usage: 'get-widget-status --widget-id <id>',
 		description: 'Get App-side status for a widget.',
 		inputSchema: {
@@ -618,7 +618,7 @@ const appCommands = [
 		},
 	},
 	{
-		name: 'wait_for_widget_ready',
+		name: 'wait-for-widget-ready',
 		usage: 'wait-for-widget-ready --widget-id <id> [--timeout-ms <ms>]',
 		description: 'Wait for the current widget preview to have rendered data.',
 		inputSchema: {
@@ -631,7 +631,7 @@ const appCommands = [
 		},
 	},
 	{
-		name: 'get_build_errors',
+		name: 'get-build-errors',
 		usage: 'get-build-errors --widget-id <id>',
 		description: 'Get recent build errors for a widget.',
 		inputSchema: {
@@ -641,7 +641,7 @@ const appCommands = [
 		},
 	},
 	{
-		name: 'list_widget_intents',
+		name: 'list-widget-intents',
 		usage: 'list-widget-intents --widget-id <id>',
 		description: 'List widget intents registered by a widget.',
 		inputSchema: {
@@ -651,7 +651,7 @@ const appCommands = [
 		},
 	},
 	{
-		name: 'call_widget_intent',
+		name: 'call-widget-intent',
 		usage: 'call-widget-intent --widget-id <id> --intent-id <id> [--input <json-array>]',
 		description: 'Call a widget intent with positional input arguments.',
 		inputSchema: {
@@ -670,12 +670,11 @@ const appCommands = [
 ];
 
 function appCommandName(value) {
-	const name = value.replaceAll('-', '_');
-	if (!appCommands.some(command => command.name === name)) {
+	if (!appCommands.some(command => command.name === value)) {
 		throw new Error(`Unsupported Await app command: ${value}`);
 	}
 
-	return name;
+	return value;
 }
 
 async function runAppCommand(options) {
@@ -725,7 +724,7 @@ async function callAppCommand(bridgeUrl, tool, args) {
 }
 
 function appCommandResult(options, tool, result) {
-	if (tool === 'capture_current_preview' && result.imageBase64) {
+	if (tool === 'capture-current-preview' && result.imageBase64) {
 		const filePath = saveCapture(options, result);
 		return {...result, imageBase64: undefined, filePath};
 	}
