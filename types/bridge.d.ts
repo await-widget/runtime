@@ -130,6 +130,7 @@ type AwaitDefineConfig<T extends Record<string, unknown>, Intents> = {
 	widgetTimeline?: (
 		context: TimelineContext,
 	) => Timeline<T> | Promise<Timeline<T>>;
+	widgetFamilies?: WidgetFamily[];
 	widgetIntents?: {
 		[IntentKey in keyof Intents]: Intents[IntentKey] extends (
 			...args: infer IntentArguments

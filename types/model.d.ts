@@ -11,11 +11,11 @@ type WidgetFamily =
 	| 'medium'
 	| 'large'
 	| 'extraLarge'
+	| 'extraLargePortrait'
 	| 'fullscreen'
 	| 'accessoryInline'
 	| 'accessoryCircular'
-	| 'accessoryRectangular'
-	| 'unknown';
+	| 'accessoryRectangular';
 
 type SingleNativeView =
 	| string
