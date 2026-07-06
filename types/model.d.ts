@@ -236,6 +236,11 @@ type AwaitMusicSource =
 			type: 'station';
 			id: string;
 			name: string;
+	  }
+	| {
+			type: 'playlist';
+			id: string;
+			name: string;
 	  };
 
 type AwaitNowPlayingInfo = {
@@ -302,6 +307,14 @@ type AwaitMusicPlayConfig =
 			query?: string;
 			type?: 'discovery' | 'user';
 			id?: string;
+	  }
+	| {
+			source: 'playlist';
+			query?: string;
+			type?: 'public' | 'user';
+			id?: string;
+			shuffle?: boolean;
+			loop?: boolean;
 	  };
 
 type AwaitCalendarConfig = {
@@ -323,10 +336,12 @@ type AwaitCalendarItem = {
 
 type AwaitReminderConfig = {
 	type?: 'all' | 'incomplete' | 'completed';
+	calendarTitle?: string;
 	limit?: number;
 };
 
 type AwaitReminderItem = {
+	id: string;
 	calendarTitle: string;
 	title: string;
 	notes?: string;

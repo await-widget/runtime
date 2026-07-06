@@ -58,6 +58,12 @@ export declare const AwaitCalendar: {
 };
 export declare const AwaitReminder: {
 	get(config?: AwaitReminderConfig): Promise<AwaitReminderItem[] | undefined>;
+	set(
+		id: string,
+		config: {
+			completed: boolean;
+		},
+	): Promise<void>;
 };
 export declare const AwaitSystem: {
 	get(): AwaitSystemInfo;
