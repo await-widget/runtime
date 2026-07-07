@@ -641,6 +641,16 @@ const appCommands = [
 		},
 	},
 	{
+		name: 'get-recent-widget-logs',
+		usage: 'get-recent-widget-logs --widget-id <id>',
+		description: 'Get recent print logs for a widget. Requires Lifetime Pro in Await.',
+		inputSchema: {
+			type: 'object',
+			properties: {widgetId: {type: 'string'}},
+			required: ['widgetId'],
+		},
+	},
+	{
 		name: 'list-widget-intents',
 		usage: 'list-widget-intents --widget-id <id>',
 		description: 'List widget intents registered by a widget.',
@@ -951,8 +961,9 @@ Examples:
   npx await-widget
   npx await-widget --port 4344
   npx await-widget app open-syncing-widget-detail
-  npx await-widget app wait-for-widget-ready --widget-id 2
-  npx await-widget app capture-current-preview --widget-id 2
+  npx await-widget app wait-for-widget-ready --widget-id YourWidget
+  npx await-widget app capture-current-preview --widget-id YourWidget
+  npx await-widget app get-recent-widget-logs --widget-id YourWidget
 
 App command options:
   --workspace <path>     Read .await/bridge.json from another package/widget path.
