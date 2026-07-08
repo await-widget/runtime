@@ -88,6 +88,7 @@ export declare const AwaitStore: {
 	delete(key: string): void;
 	set(key: string, value: Encodable): void;
 };
+/** `AwaitFile` can interact only with files located within the widget directory. Do not access hidden paths or parent directories. */
 export declare const AwaitFile: {
 	files(path: string): string[];
 	readJSON(path: string): unknown;
