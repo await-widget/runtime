@@ -92,9 +92,13 @@ type AwaitWeatherHourly = {
 	condition: string;
 	symbolName: string;
 	temperatureCelsius: number;
+	apparentTemperatureCelsius: number;
 	humidity: number;
 	uvIndex: number;
 	windSpeedMetersPerSecond: number;
+	windDirectionDegrees: number;
+	pressureHectopascals: number;
+	visibilityKilometers: number;
 	precipitationChance: number;
 };
 
@@ -106,6 +110,8 @@ type AwaitWeatherDaily = {
 	lowTemperatureCelsius: number;
 	precipitationChance: number;
 	uvIndex: number;
+	windSpeedMetersPerSecond: number;
+	windDirectionDegrees: number;
 };
 
 type AwaitWeatherResult = {
