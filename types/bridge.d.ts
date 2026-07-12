@@ -165,6 +165,7 @@ export declare const AwaitEnv: {
 	readonly tag: number;
 	readonly host: 'app' | 'widget';
 	readonly version: string;
+	readonly appVersion: string;
 	test(...args: unknown[]): unknown;
 };
 type AwaitGlobal = typeof Await;

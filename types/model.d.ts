@@ -71,6 +71,7 @@ type AwaitWeatherConfig = {
 	longitude?: number;
 	hourlyLimit?: number;
 	dailyLimit?: number;
+	start?: Date;
 };
 
 type AwaitWeatherCurrent = {

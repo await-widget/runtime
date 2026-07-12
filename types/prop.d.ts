@@ -160,12 +160,15 @@ type ClockSecondValue = {
 	size: Size;
 };
 
-type FlipValue = {
+type AxisFlipValue = {
 	index: number;
-	delta: number;
 	curr: NativeView;
 	prev: NativeView;
 	perspective?: number;
+};
+
+type FlipValue = AxisFlipValue & {
+	delta: number;
 	shadowOpacity?: number;
 	leadingHidden?: boolean;
 	trailingHidden?: boolean;

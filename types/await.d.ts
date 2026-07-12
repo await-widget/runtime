@@ -213,6 +213,20 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	export function XFlip(
+		props: AxisFlipValue &
+			ID &
+			Mods & {
+				children?: never;
+			},
+	): NativeView;
+	export function YFlip(
+		props: AxisFlipValue &
+			ID &
+			Mods & {
+				children?: never;
+			},
+	): NativeView;
 	export function HFlip(
 		props: FlipValue &
 			ID &
