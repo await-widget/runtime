@@ -12,7 +12,14 @@ const defaultPort = 4343;
 const maxBodyBytes = 100 * 1024 * 1024;
 const zipDosTime = 0;
 const zipDosDate = 33;
-const excludedNames = new Set(['.git', '.build', 'node_modules', 'dist', 'build']);
+const excludedNames = new Set([
+	'node_modules',
+	'package.json',
+	'package-lock.json',
+	'tsconfig.json',
+	'xo.config.js',
+]);
+const excludedSuffixes = ['.lock', '.lockb', '.yaml', '.yml', '.toml'];
 const crcTable = makeCrcTable();
 const bridgeInfoDirectory = '.await';
 const bridgeInfoFileName = 'bridge.json';
@@ -481,7 +488,7 @@ function listDesktopWidgets(root) {
 }
 
 function isExcludedName(name) {
-	return name.startsWith('.') || excludedNames.has(name);
+	return name.startsWith('.') || excludedNames.has(name) || excludedSuffixes.some(suffix => name.endsWith(suffix));
 }
 
 function widgetRootFromQuery(root, url) {
