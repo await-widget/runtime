@@ -114,8 +114,10 @@ type ImageValue = {
 	resizable?: Resizable;
 	/** The level of quality for rendering an image that requires interpolation, such as a scaled image. */
 	interpolation?: Interpolation;
-	/** A type that indicates how images are rendered */
+	/** The mode that indicates how images are rendered */
 	style?: TemplateRenderingMode;
+	/** The mode that indicates how images are rendered on widget accented mode */
+	accented?: Accented;
 };
 
 type IconValue = {

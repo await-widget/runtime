@@ -4,6 +4,12 @@ type ColorScheme = 'light' | 'dark';
 
 type RenderingMode = 'fullColor' | 'accented' | 'vibrant';
 
+type Accented =
+	| 'fullColor'
+	| 'accented'
+	| 'accentedDesaturated'
+	| 'desaturated';
+
 type Update = Date | 'end' | 'rapid' | 'never';
 
 type WidgetFamily =
