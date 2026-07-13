@@ -6,6 +6,7 @@ import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
 import process from 'node:process';
+import readline from 'node:readline';
 
 const defaultPort = 4343;
 const maxBodyBytes = 100 * 1024 * 1024;
@@ -16,6 +17,7 @@ const crcTable = makeCrcTable();
 const bridgeInfoDirectory = '.await';
 const bridgeInfoFileName = 'bridge.json';
 const singleWidgetPath = '.';
+const widgetDirectoryError = 'Run await-widget from a package root or first-level widget folder whose package.json includes @await-widget/runtime.';
 
 function main() {
 	const options = parseArgs(process.argv.slice(2));
@@ -128,10 +130,10 @@ function parseAppArgs(args) {
 	};
 }
 
-function startWorkspaceServer(options) {
+async function startWorkspaceServer(options) {
 	let roots;
 	try {
-		roots = resolveWidgetServerRoots(process.cwd());
+		roots = await resolveWidgetServerRoots(process.cwd());
 	} catch (error) {
 		console.error(error.message);
 		process.exit(1);
@@ -394,20 +396,79 @@ function findPackageRoot(start) {
 	}
 }
 
-function resolveWidgetServerRoots(start) {
+async function resolveWidgetServerRoots(start) {
 	const widgetRoot = path.resolve(start);
 	const packageRoot = findPackageRoot(widgetRoot);
 	if (
 		!packageRoot
-		|| packageRoot === widgetRoot
-		|| path.dirname(widgetRoot) !== packageRoot
-		|| !isValidTopLevelName(path.basename(widgetRoot))
 		|| !hasRuntimeDependency(packageRoot)
 	) {
-		throw new Error('Run await-widget from a first-level widget folder inside a package whose package.json includes @await-widget/runtime.');
+		throw new Error(widgetDirectoryError);
+	}
+
+	if (packageRoot === widgetRoot) {
+		return {packageRoot, widgetRoot: await selectWidgetRoot(packageRoot)};
+	}
+
+	if (path.dirname(widgetRoot) !== packageRoot || !isValidTopLevelName(path.basename(widgetRoot))) {
+		throw new Error(widgetDirectoryError);
 	}
 
 	return {packageRoot, widgetRoot};
+}
+
+function selectWidgetRoot(packageRoot) {
+	const options = [
+		{name: `${path.basename(packageRoot)} (root)`, path: packageRoot},
+		...fs.readdirSync(packageRoot, {withFileTypes: true})
+			.filter(entry => entry.isDirectory() && isValidTopLevelName(entry.name))
+			.sort((left, right) => left.name.localeCompare(right.name))
+			.map(entry => ({name: entry.name, path: path.join(packageRoot, entry.name)})),
+	];
+	let selected = 0;
+	let rendered = false;
+	readline.emitKeypressEvents(process.stdin);
+	process.stdin.setRawMode(true);
+	process.stdin.resume();
+	console.log('Select a directory to connect:');
+
+	const render = () => {
+		if (rendered) {
+			readline.moveCursor(process.stdout, 0, -options.length);
+			readline.clearScreenDown(process.stdout);
+		}
+
+		process.stdout.write(`${options.map((option, index) => `${index === selected ? '❯' : ' '} ${option.name}`).join('\n')}\n`);
+		rendered = true;
+	};
+	render();
+
+	return new Promise(resolve => {
+		const cleanup = () => {
+			process.stdin.off('keypress', onKeypress);
+			process.stdin.setRawMode(false);
+			process.stdin.pause();
+		};
+		const onKeypress = (_character, key) => {
+			if (key.name === 'up' || key.name === 'down') {
+				selected = (selected + (key.name === 'up' ? options.length - 1 : 1)) % options.length;
+				render();
+				return;
+			}
+
+			if (key.name === 'return' || key.name === 'enter') {
+				cleanup();
+				resolve(options[selected].path);
+				return;
+			}
+
+			if (key.ctrl && key.name === 'c') {
+				cleanup();
+				process.exit(130);
+			}
+		};
+		process.stdin.on('keypress', onKeypress);
+	});
 }
 
 function hasRuntimeDependency(packageRoot) {
@@ -948,11 +1009,12 @@ function printHelp() {
   await-widget [--port ${defaultPort}]
   await-widget app <command> [options]
 
-Start the Await computer connection from a first-level widget folder under a
-package whose package.json includes @await-widget/runtime.
+Start the Await computer connection from a package root or first-level widget
+folder whose package.json includes @await-widget/runtime. Starting from the
+package root opens a directory selector.
 
 What it does:
-  - Serves the current widget folder to Await for live sync.
+  - Serves the selected widget folder to Await for live sync.
   - Prints a URL to paste into Await's Connect Computer sheet.
   - Writes .await/bridge.json in the package root for app commands.
   - Sends one-shot JSON app commands with await-widget app <command>.
