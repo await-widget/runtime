@@ -30,6 +30,7 @@ declare module 'await' {
 				children?: NativeView;
 			},
 	): NativeView;
+	/** Opens a custom-scheme URL or universal link through the Await app when tapped. */
 	export function Link(
 		props: LinkValue &
 			ID &
@@ -37,6 +38,7 @@ declare module 'await' {
 				children?: NativeView;
 			},
 	): NativeView;
+	/** When tapped, runs an intent or opens a universal link directly without going through the Await app. */
 	export function Button(
 		props: ButtonValue &
 			ID &
@@ -44,6 +46,7 @@ declare module 'await' {
 				children?: NativeView;
 			},
 	): NativeView;
+	/** Displays a solid color and expands to fill the available space. */
 	export function Color(
 		props: ColorValue &
 			ID &
@@ -51,6 +54,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Displays text and can contain nested `Text` or `Image` views. */
 	export function Text(
 		props: TextValue &
 			ID &
@@ -58,6 +62,7 @@ declare module 'await' {
 				children?: NativeView;
 			},
 	): NativeView;
+	/** Displays an automatically updating clock or countdown. */
 	export function Time(
 		props: TimeValue &
 			ID &
@@ -79,13 +84,15 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Displays an image from a local or remote path, or renders child views as an image. Avoid large or complex child content due to system limits. */
 	export function Image(
 		props: ImageValue &
 			ID &
 			Mods & {
-				children?: never;
+				children?: NativeView;
 			},
 	): NativeView;
+	/** Displays a system SF Symbol. */
 	export function Icon(
 		props: IconValue &
 			ID &
@@ -93,6 +100,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Displays an SVG from a local or remote path, or from raw SVG markup. */
 	export function Svg(
 		props: SvgValue &
 			ID &
@@ -100,6 +108,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Draws a rounded rectangle that expands to fill the available space. */
 	export function RoundedRectangle(
 		props: RoundedRectangleValue &
 			ShapeValue &
@@ -108,6 +117,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Draws a rounded rectangle with independently configurable corners that expands to fill the available space. */
 	export function UnevenRoundedRectangle(
 		props: UnevenRoundedRectangleValue &
 			ShapeValue &
@@ -116,6 +126,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Draws a rectangle that expands to fill the available space. */
 	export function Rectangle(
 		props: ShapeValue &
 			ID &
@@ -123,6 +134,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Draws a circular sector that expands to fill the available space. */
 	export function Sector(
 		props: SectorValue &
 			ShapeValue &
@@ -131,6 +143,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Draws an ellipse that expands to fill the available space. */
 	export function Ellipse(
 		props: ShapeValue &
 			ID &
@@ -138,6 +151,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Draws a circle that expands to fill the available space. */
 	export function Circle(
 		props: ShapeValue &
 			ID &
@@ -145,6 +159,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Draws a polygon that expands to fill the available space. */
 	export function Polygon(
 		props: PolygonValue &
 			ShapeValue &
@@ -153,6 +168,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Draws a diamond that expands to fill the available space. */
 	export function Diamond(
 		props: ShapeValue &
 			ID &
@@ -160,6 +176,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Draws a capsule that expands to fill the available space. */
 	export function Capsule(
 		props: CapsuleValue &
 			ShapeValue &
@@ -168,6 +185,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Adds flexible space within an `HStack` or `VStack`, expanding to fill the available space. */
 	export function Spacer(
 		props: SpacerValue &
 			ID &
@@ -181,6 +199,7 @@ declare module 'await' {
 				children?: NativeView;
 			},
 	): NativeView;
+	/** Creates a modifier for use in a `CustomButtonStyle`. */
 	export function Modifier(
 		props: ID &
 			Mods & {
@@ -193,6 +212,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Creates a transparent button that expands to fill the available space. */
 	export function FullButton(
 		props: ButtonValue &
 			ID &
@@ -200,12 +220,14 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Displays a random number for debugging. */
 	export function Stamp(
 		props: ID &
 			Mods & {
 				children?: never;
 			},
 	): NativeView;
+	/** Creates a vertical page-flip effect. */
 	export function VFlip(
 		props: FlipValue &
 			ID &
@@ -213,20 +235,7 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
-	export function XFlip(
-		props: AxisFlipValue &
-			ID &
-			Mods & {
-				children?: never;
-			},
-	): NativeView;
-	export function YFlip(
-		props: AxisFlipValue &
-			ID &
-			Mods & {
-				children?: never;
-			},
-	): NativeView;
+	/** Creates a horizontal page-flip effect. */
 	export function HFlip(
 		props: FlipValue &
 			ID &
@@ -234,6 +243,23 @@ declare module 'await' {
 				children?: never;
 			},
 	): NativeView;
+	/** Creates a flip transition around the x-axis. */
+	export function XFlip(
+		props: AxisFlipValue &
+			ID &
+			Mods & {
+				children?: never;
+			},
+	): NativeView;
+	/** Creates a flip transition around the y-axis. */
+	export function YFlip(
+		props: AxisFlipValue &
+			ID &
+			Mods & {
+				children?: never;
+			},
+	): NativeView;
+	/** Creates a GIF-like animation with limited system support. Only specific durations are available, transparency is not supported directly, and frame dimensions and count should remain small. */
 	export function Gif(
 		props: GifValue &
 			ID &
@@ -241,17 +267,17 @@ declare module 'await' {
 				children: NativeView[];
 			},
 	): NativeView;
-	/** This is a fallback for Ticker on iOS 18 and earlier. */
-	export function ClockSecond(
-		props: ClockSecondValue &
+	/** Cycles through a sequence of views based on the selected time unit, enabling effects such as a ticking second hand. Available on iOS 26 and later. */
+	export function Ticker(
+		props: TickerValue &
 			ID &
 			Mods & {
 				children: NativeView[];
 			},
 	): NativeView;
-	/** Available on iOS 26 and later. */
-	export function Ticker(
-		props: TickerValue &
+	/** Cycles through a sequence of views once per second, enabling effects such as a ticking second hand. It is less efficient than `Ticker`. Available on iOS 18 and earlier. */
+	export function ClockSecond(
+		props: ClockSecondValue &
 			ID &
 			Mods & {
 				children: NativeView[];
