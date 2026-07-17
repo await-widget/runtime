@@ -118,6 +118,7 @@ type Padding =
 
 type RadialGradient = {
 	gradient: 'radial';
+	color?: Color;
 	colors?: Color[];
 	stops?: Array<[Color, number]>;
 	startRadius?: number;
@@ -126,6 +127,7 @@ type RadialGradient = {
 
 type AngularGradient = {
 	gradient: 'angular';
+	color?: Color;
 	colors?: Color[];
 	stops?: Array<[Color, number]>;
 	angle?: number;
@@ -134,6 +136,7 @@ type AngularGradient = {
 
 type LinearGradient = {
 	gradient: 'linear';
+	color?: Color;
 	colors?: Color[];
 	stops?: Stop[];
 	startPoint?: UnitPoint;
