@@ -424,3 +424,93 @@ type strikethrough =
 			isActive?: boolean;
 			color?: Color;
 	  };
+
+type DateFormatYearToken = {
+	field: 'year';
+	style?: 'default' | 'twoDigits';
+};
+
+type DateFormatQuarterToken = {
+	field: 'quarter';
+	values: [
+		firstQuarter: string,
+		secondQuarter: string,
+		thirdQuarter: string,
+		fourthQuarter: string,
+	];
+};
+
+type DateFormatMonthToken = {
+	field: 'month';
+	style?: 'default' | 'twoDigits' | 'short' | 'long';
+};
+
+type DateFormatDayToken = {
+	field: 'day';
+	style?: 'default' | 'twoDigits';
+};
+
+type DateFormatDayOfYearToken = {
+	field: 'dayOfYear';
+	style?: 'default' | 'twoDigits' | 'threeDigits';
+};
+
+type DateFormatWeekdayToken = {
+	field: 'weekday';
+	values: [
+		monday: string,
+		tuesday: string,
+		wednesday: string,
+		thursday: string,
+		friday: string,
+		saturday: string,
+		sunday: string,
+	];
+};
+
+type DateFormatHourToken = {
+	field: 'hour';
+	style?: 'default' | 'twoDigits';
+	/** Omit to use the system hour cycle. */
+	cycle?: 12 | 24;
+};
+
+type DateFormatMinuteToken = {
+	field: 'minute';
+	style?: 'default' | 'twoDigits';
+};
+
+type DateFormatSecondToken = {
+	field: 'second';
+	style?: 'default' | 'twoDigits';
+};
+
+type DateFormatFractionalSecondToken = {
+	field: 'fractionalSecond';
+	digits: 1 | 2 | 3;
+};
+
+type DateFormatAMPMToken = {
+	field: 'ampm';
+	values?: [am: string, pm: string];
+};
+
+type DateFormatTimeZoneToken = {
+	field: 'zone';
+	style?: 'short' | 'long' | 'identifier' | 'city';
+};
+
+type DateFormatToken =
+	| string
+	| DateFormatYearToken
+	| DateFormatQuarterToken
+	| DateFormatMonthToken
+	| DateFormatDayToken
+	| DateFormatDayOfYearToken
+	| DateFormatWeekdayToken
+	| DateFormatHourToken
+	| DateFormatMinuteToken
+	| DateFormatSecondToken
+	| DateFormatFractionalSecondToken
+	| DateFormatAMPMToken
+	| DateFormatTimeZoneToken;

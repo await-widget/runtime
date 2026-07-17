@@ -125,11 +125,20 @@ type IconValue = {
 	value?: string;
 };
 
-type TimeValue = {
-	date?: Date;
-	/** Use `timer` to update once per second. */
-	style?: TimeStyle;
-};
+type TimeValue =
+	| {
+			/** IANA time-zone identifier. Omit to use the system time zone. */
+			timezone?: string;
+			format?: DateFormatToken[];
+			date?: never;
+			style?: never;
+	  }
+	| {
+			timezone?: never;
+			format?: never;
+			date?: Date;
+			style?: TimeStyle;
+	  };
 
 type ProgressViewValue = {
 	value: number | [start: Date, end: Date];
