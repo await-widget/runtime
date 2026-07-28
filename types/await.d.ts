@@ -275,14 +275,6 @@ declare module 'await' {
 				children: NativeView[];
 			},
 	): NativeView;
-	/** Cycles through a sequence of views once per second, enabling effects such as a ticking second hand. It is less efficient than `Ticker`. Available on iOS 18 and earlier. */
-	export function ClockSecond(
-		props: ClockSecondValue &
-			ID &
-			Mods & {
-				children: NativeView[];
-			},
-	): NativeView;
 }
 
 declare module 'await/jsx-runtime' {

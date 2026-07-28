@@ -118,6 +118,8 @@ type ImageValue = {
 	style?: TemplateRenderingMode;
 	/** The mode that indicates how images are rendered on widget accented mode */
 	accented?: Accented;
+	/** The maximum number of pixels along the image's longest edge. Defaults to 1000. */
+	maxPixel?: number;
 };
 
 type IconValue = {
@@ -128,13 +130,13 @@ type IconValue = {
 type TimeValue =
 	| {
 			/** IANA time-zone identifier. Omit to use the system time zone. */
-			timezone?: string;
+			timeZone?: string;
 			format?: DateFormatToken[];
 			date?: never;
 			style?: never;
 	  }
 	| {
-			timezone?: never;
+			timeZone?: never;
 			format?: never;
 			date?: Date;
 			style?: TimeStyle;

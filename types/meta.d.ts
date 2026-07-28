@@ -433,16 +433,6 @@ type DateFormatYearToken = {
 	style?: 'default' | 'twoDigits';
 };
 
-type DateFormatQuarterToken = {
-	field: 'quarter';
-	values: [
-		firstQuarter: string,
-		secondQuarter: string,
-		thirdQuarter: string,
-		fourthQuarter: string,
-	];
-};
-
 type DateFormatMonthToken = {
 	field: 'month';
 	style?: 'default' | 'twoDigits' | 'short' | 'long';
@@ -456,19 +446,6 @@ type DateFormatDayToken = {
 type DateFormatDayOfYearToken = {
 	field: 'dayOfYear';
 	style?: 'default' | 'twoDigits' | 'threeDigits';
-};
-
-type DateFormatWeekdayToken = {
-	field: 'weekday';
-	values: [
-		monday: string,
-		tuesday: string,
-		wednesday: string,
-		thursday: string,
-		friday: string,
-		saturday: string,
-		sunday: string,
-	];
 };
 
 type DateFormatHourToken = {
@@ -495,7 +472,6 @@ type DateFormatFractionalSecondToken = {
 
 type DateFormatAMPMToken = {
 	field: 'ampm';
-	values?: [am: string, pm: string];
 };
 
 type DateFormatTimeZoneToken = {
@@ -506,11 +482,9 @@ type DateFormatTimeZoneToken = {
 type DateFormatToken =
 	| string
 	| DateFormatYearToken
-	| DateFormatQuarterToken
 	| DateFormatMonthToken
 	| DateFormatDayToken
 	| DateFormatDayOfYearToken
-	| DateFormatWeekdayToken
 	| DateFormatHourToken
 	| DateFormatMinuteToken
 	| DateFormatSecondToken
