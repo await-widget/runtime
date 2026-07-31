@@ -165,6 +165,7 @@ export declare const AwaitEnv: {
 	readonly id: string;
 	readonly tag: number;
 	readonly host: 'app' | 'widget';
+	readonly language: string;
 	readonly version: string;
 	readonly appVersion: string;
 	test(...args: unknown[]): unknown;

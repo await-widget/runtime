@@ -318,7 +318,7 @@ type AwaitMusicPlayConfig =
 	| {
 			source: 'station';
 			query?: string;
-			type?: 'discovery' | 'user';
+			type?: 'discovery' | 'user' | 'song' | 'artist';
 			id?: string;
 	  }
 	| {
