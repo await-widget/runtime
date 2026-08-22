@@ -169,7 +169,7 @@ type TickerValue = {
 	style: TickerStyle;
 };
 
-type ClockSecondValue = {
+type FlashTickerValue = {
 	size: Size;
 };
 
