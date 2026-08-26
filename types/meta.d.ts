@@ -304,8 +304,17 @@ type ScaleEffect =
 			anchor?: UnitPoint;
 	  };
 
-type Font = {
-	name: string;
+type FontSource =
+	| {
+			name: string;
+			url?: never;
+	  }
+	| {
+			name?: never;
+			url: string;
+	  };
+
+type Font = FontSource & {
 	size: number;
 	wght?: number;
 	wdth?: number;
