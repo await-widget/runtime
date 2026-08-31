@@ -9,6 +9,13 @@ declare module 'await' {
 		create: (props: Props) => NativeView,
 		props: Props,
 	) => NativeView;
+	/** This is an experimental component and may change in the future. */
+	export function Scroll(
+		props: ID &
+			Mods & {
+				children?: NativeView;
+			},
+	): NativeView;
 	export function VStack(
 		props: VStackValue &
 			ID &
