@@ -207,6 +207,7 @@ type BaseMods = {
 	buttonStyle?: ButtonStyle;
 	clipped?: boolean;
 	clipShape?: NativeView | '';
+	clockEffect?: number | 'second' | 'minute' | 'hour';
 	colorInvert?: boolean;
 	colorMultiply?: Color;
 	compositingGroup?: boolean;
