@@ -353,6 +353,8 @@ type RotationEffect =
 
 type Frame =
 	| {
+			minWidth?: Dimension;
+			minHeight?: Dimension;
 			maxWidth?: Dimension;
 			maxHeight?: Dimension;
 			alignment?: Alignment;
