@@ -35,6 +35,8 @@ type ButtonValue = {
 	fast?: boolean;
 	/** Requests permission to play audio. */
 	audio?: boolean;
+	/** Runs the intent in the app process so it can start or update a live activity from the background. */
+	live?: boolean;
 	/** Opens a universal link directly, such as `https://github.com/await-widget/skills`. */
 	url?: string;
 };

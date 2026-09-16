@@ -408,6 +408,17 @@ type WidgetEntry<T extends Record<string, unknown> = Record<string, unknown>> =
 			renderingMode: RenderingMode;
 		};
 
+type LiveViews = {
+	lockscreen?: NativeView;
+	compactLeading?: NativeView;
+	compactTrailing?: NativeView;
+	minimal?: NativeView;
+	leading?: NativeView;
+	trailing?: NativeView;
+	center?: NativeView;
+	bottom?: NativeView;
+};
+
 type TimelineContext = {
 	size: Size;
 	family: WidgetFamily;

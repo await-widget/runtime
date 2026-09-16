@@ -158,6 +158,10 @@ export declare const Await: {
 		config: Config & AwaitDefineConfig<T, Config['widgetIntents']>,
 	): AwaitDefineResult<Config['widgetIntents']>;
 };
+export declare const AwaitLive: {
+	start(views: LiveViews): Promise<void>;
+	end(): Promise<void>;
+};
 export declare const AwaitLaunch: {
 	start(bundleId: string): any;
 };
@@ -172,6 +176,7 @@ export declare const AwaitEnv: {
 };
 type AwaitGlobal = typeof Await;
 type AwaitEnvGlobal = typeof AwaitEnv;
+type AwaitLiveGlobal = typeof AwaitLive;
 type AwaitLaunchGlobal = typeof AwaitLaunch;
 type AwaitUIGlobal = typeof AwaitUI;
 type AwaitClipboardGlobal = typeof AwaitClipboard;
@@ -191,6 +196,7 @@ type SleepGlobal = typeof sleep;
 declare global {
 	const Await: AwaitGlobal;
 	const AwaitEnv: AwaitEnvGlobal;
+	const AwaitLive: AwaitLiveGlobal;
 	const AwaitLaunch: AwaitLaunchGlobal;
 	const AwaitUI: AwaitUIGlobal;
 	const AwaitClipboard: AwaitClipboardGlobal;
