@@ -30,6 +30,13 @@ declare module 'await' {
 				children?: NativeView;
 			},
 	): NativeView;
+	export function Flow(
+		props: FlowValue &
+			ID &
+			Mods & {
+				children?: NativeView;
+			},
+	): NativeView;
 	export function ZStack(
 		props: ZStackValue &
 			ID &

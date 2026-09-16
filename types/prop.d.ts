@@ -14,6 +14,15 @@ type HStackValue = {
 	alignment?: VerticalAlignment;
 };
 
+type FlowValue = {
+	/** Default 0. */
+	spacing?: number;
+	/** Default 0. */
+	rowSpacing?: number;
+	/** Vertical alignment for items within each row. */
+	alignment?: VerticalAlignment;
+};
+
 type ZStackValue = {
 	/** Horizontal and vertical alignment for child views. */
 	alignment?: Alignment;
