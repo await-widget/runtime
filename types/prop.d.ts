@@ -216,6 +216,7 @@ type BaseMods = {
 	buttonStyle?: ButtonStyle;
 	clipped?: boolean;
 	clipShape?: NativeView | '';
+	/** This modifier is currently available, but future availability is uncertain. */
 	clockEffect?: number | 'second' | 'minute' | 'hour';
 	colorInvert?: boolean;
 	colorMultiply?: Color;
