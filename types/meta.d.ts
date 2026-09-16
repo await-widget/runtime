@@ -89,7 +89,11 @@ type ContentTransition =
 	| ['numericText', boolean]
 	| ['numericText', number];
 
-type Edge = 'top' | 'bottom' | 'leading' | 'trailing';
+type VerticalEdge = 'top' | 'bottom';
+
+type HorizontalEdge = 'leading' | 'trailing';
+
+type Edge = VerticalEdge | HorizontalEdge;
 
 type RawTransition =
 	| 'identity'
