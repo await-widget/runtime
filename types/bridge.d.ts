@@ -125,6 +125,7 @@ export declare const AwaitAudio: {
 export declare const AwaitUI: {
 	readonly displayScale: number;
 	haptic(type: string): void;
+	goHome(): void;
 };
 type AwaitDefineConfig<T extends Record<string, unknown>, Intents> = {
 	widget: (entry: WidgetEntry<T>) => NativeView;
