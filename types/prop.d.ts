@@ -227,7 +227,7 @@ type BaseMods = {
 	blendMode?: BlendMode;
 	blur?: Blur;
 	brightness?: number;
-	buttonStyle?: ButtonStyle;
+	buttonStyle?: ButtonStyle | '';
 	clipped?: boolean;
 	clipShape?: NativeView | '';
 	/** This modifier is currently available, but future availability is uncertain. */
