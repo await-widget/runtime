@@ -145,12 +145,24 @@ type TimeValue =
 			format?: DateFormatToken[];
 			date?: never;
 			style?: never;
+			countsDown?: never;
+			showsHours?: never;
 	  }
 	| {
-			timeZone?: never;
-			format?: never;
 			date?: Date;
 			style?: TimeStyle;
+			timeZone?: never;
+			format?: never;
+			countsDown?: never;
+			showsHours?: never;
+	  }
+	| {
+			date?: Date;
+			countsDown?: boolean;
+			showsHours?: boolean;
+			timeZone?: never;
+			format?: never;
+			style?: never;
 	  };
 
 type ProgressViewValue = {
