@@ -21,6 +21,8 @@ type FlowValue = {
 	rowSpacing?: number;
 	/** Vertical alignment for items within each row. */
 	alignment?: VerticalAlignment;
+	/** Horizontal alignment for each row when its contents do not fill the available width. */
+	rowAlignment?: 'leading' | 'center' | 'trailing';
 };
 
 type ZStackValue = {
