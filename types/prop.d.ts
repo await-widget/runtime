@@ -48,8 +48,8 @@ type ShapeValue = {
 	stroke?: {
 		color?: Color;
 		lineWidth?: number;
-		lineCap?: string;
-		lineJoin?: string;
+		lineCap?: 'butt' | 'round' | 'square';
+		lineJoin?: 'miter' | 'round' | 'bevel';
 		miterLimit?: number;
 		dash?: number[];
 		dashPhase?: number;
