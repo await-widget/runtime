@@ -162,6 +162,7 @@ export declare const Await: {
 export declare const AwaitLive: {
 	start(views: LiveViews): Promise<void>;
 	end(): Promise<void>;
+	toggle(views: LiveViews): Promise<void>;
 };
 export declare const AwaitLaunch: {
 	start(bundleId: string): any;
