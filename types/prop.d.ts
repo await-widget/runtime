@@ -41,6 +41,8 @@ type ButtonValue = {
 	live?: boolean;
 	/** Opens a universal link directly, such as `https://github.com/await-widget/skills`. */
 	url?: string;
+	/** Shortcut index for iOS 27, based on the shortcuts selected in widget configuration. */
+	shortcut?: number;
 };
 
 type ShapeValue = {
@@ -133,11 +135,15 @@ type ImageValue = {
 	accented?: Accented;
 	/** The maximum number of pixels along the image's longest edge. Defaults to 1000. */
 	maxPixel?: number;
+	/** Maximum width and height for the image's natural layout size. Scales down proportionally. */
+	proposedSize?: {width?: number; height?: number};
 };
 
 type IconValue = {
 	/** The name of the system symbol image. Use the SF Symbols app to look up the names of system symbol images. */
 	value?: string;
+	/** The modes used to resize the symbol to fit within its containing view. */
+	resizable?: Resizable;
 };
 
 type TimeValue =

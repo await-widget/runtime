@@ -291,9 +291,8 @@ declare module 'await' {
 	): NativeView;
 	/** Flashes once per second in a 60-second cycle, achieving the effect of a ticking second hand. Available on iOS 18 and later. */
 	export function FlashTicker(
-		props: {
-			size: Size;
-		} & ID &
+		props: FlashTickerValue &
+			ID &
 			Mods & {
 				children: NativeView[];
 			},
