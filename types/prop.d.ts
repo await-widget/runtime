@@ -296,8 +296,12 @@ type BaseMods = {
 	rotation3DEffect?: Rotation3DEffect;
 	rotationEffect?: RotationEffect;
 	safeAreaInset?:
-		| {edge: HorizontalEdge; alignment: VerticalAlignment; content: NativeView}
-		| {edge: VerticalEdge; alignment: HorizontalAlignment; content: NativeView};
+		| {edge: HorizontalEdge; alignment?: VerticalAlignment; content: NativeView}
+		| {
+				edge: VerticalEdge;
+				alignment?: HorizontalAlignment;
+				content: NativeView;
+		  };
 	saturation?: number;
 	scaleEffect?: ScaleEffect;
 	shadow?: Shadow;
