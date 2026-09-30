@@ -146,6 +146,30 @@ type IconValue = {
 	resizable?: Resizable;
 };
 
+/** Unbounded stopwatch counts up from `date` */
+type TimeStopwatchFormat = {
+	type: 'stopwatch';
+	/** Whether to include an hours component. Default true. */
+	showsHours?: boolean;
+	/** Maximum number of time fields to display. Default 4. */
+	maxFieldCount?: number;
+	/** Smallest displayed unit in seconds, e.g. 0.01. Default 0.01. */
+	maxPrecision?: number;
+};
+
+/** Bounded timer stops at `date` */
+type TimeTimerFormat = {
+	type: 'timer';
+	/** Counts down to `date` when true, counts up to it when false. Default true. */
+	countsDown?: boolean;
+	/** Whether to include an hours component. Default true. */
+	showsHours?: boolean;
+	/** Clamped to 2...4. Default 3. */
+	maxFieldCount?: number;
+	/** Smallest displayed unit in seconds: 0.01 (hundredths), 0.1 (tenths), or 1 (seconds). Default 1. */
+	maxPrecision?: 0.01 | 0.1 | 1;
+};
+
 type TimeValue =
 	| {
 			/** IANA time-zone identifier. Omit to use the system time zone. */
@@ -155,6 +179,28 @@ type TimeValue =
 			style?: never;
 			countsDown?: never;
 			showsHours?: never;
+			maxFieldCount?: never;
+			maxPrecision?: never;
+	  }
+	| {
+			date?: Date;
+			format: TimeStopwatchFormat;
+			timeZone?: never;
+			style?: never;
+			countsDown?: never;
+			showsHours?: never;
+			maxFieldCount?: never;
+			maxPrecision?: never;
+	  }
+	| {
+			date: Date;
+			format: TimeTimerFormat;
+			timeZone?: never;
+			style?: never;
+			countsDown?: never;
+			showsHours?: never;
+			maxFieldCount?: never;
+			maxPrecision?: never;
 	  }
 	| {
 			date?: Date;
@@ -163,14 +209,8 @@ type TimeValue =
 			format?: never;
 			countsDown?: never;
 			showsHours?: never;
-	  }
-	| {
-			date?: Date;
-			countsDown?: boolean;
-			showsHours?: boolean;
-			timeZone?: never;
-			format?: never;
-			style?: never;
+			maxFieldCount?: never;
+			maxPrecision?: never;
 	  };
 
 type ProgressViewValue = {

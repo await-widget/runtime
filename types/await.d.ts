@@ -76,7 +76,7 @@ declare module 'await' {
 				children?: NativeView;
 			},
 	): NativeView;
-	/** Displays an automatically updating clock or countdown. */
+	/** Displays an automatically updating clock, countdown/count-up timer, or stopwatch. */
 	export function Time(
 		props: TimeValue &
 			ID &
