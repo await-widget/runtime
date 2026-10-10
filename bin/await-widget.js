@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable n/prefer-global/buffer, no-bitwise, unicorn/no-array-sort */
 import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 import fs from 'node:fs';
 import http from 'node:http';
 import os from 'node:os';
@@ -921,6 +922,10 @@ function printServerUrls(port, token) {
 		console.log('');
 		console.log(recommended.url);
 		console.log('');
+		if (process.platform === 'darwin') {
+			execFileSync('pbcopy', {input: recommended.url});
+			console.log('Connection URL copied to clipboard.');
+		}
 	}
 
 	if (otherUrls.length > 0) {
