@@ -25,7 +25,6 @@ const crcTable = makeCrcTable();
 const bridgeInfoDirectory = '.await';
 const bridgeInfoFileName = 'bridge.json';
 const singleWidgetPath = '.';
-const widgetDirectoryError = 'Run await-widget from a package root or first-level widget folder whose package.json includes @await-widget/runtime.';
 
 function main() {
 	const options = parseArgs(process.argv.slice(2));
@@ -139,15 +138,14 @@ function parseAppArgs(args) {
 }
 
 async function startWorkspaceServer(options) {
-	let roots;
+	const workspaceRoot = process.cwd();
+	let widgetRoot;
 	try {
-		roots = await resolveWidgetServerRoots(process.cwd());
+		widgetRoot = await selectWidgetRoot(workspaceRoot);
 	} catch (error) {
 		console.error(error.message);
 		process.exit(1);
 	}
-
-	const {packageRoot, widgetRoot} = roots;
 
 	const token = crypto.randomBytes(6).toString('hex');
 	const bridge = createBridgeState(widgetRoot);
@@ -162,7 +160,7 @@ async function startWorkspaceServer(options) {
 	server.listen(options.port, '0.0.0.0', () => {
 		const address = server.address();
 		const port = typeof address === 'object' && address ? address.port : options.port;
-		writeBridgeInfo(packageRoot, port, token);
+		writeBridgeInfo(workspaceRoot, port, token);
 		console.log(`Await computer connection serving ${widgetRoot}`);
 		printServerUrls(port, token);
 		console.log('Press Ctrl+C to stop.');
@@ -387,51 +385,29 @@ function widgetPathKey(widgets) {
 	return widgets.map(widget => widget.path).sort((left, right) => left.localeCompare(right)).join('\n');
 }
 
-function findPackageRoot(start) {
+function findBridgeRoot(start) {
 	let current = path.resolve(start);
 	while (true) {
-		const candidate = path.join(current, 'package.json');
-		if (fs.existsSync(candidate)) {
+		if (fs.existsSync(bridgeInfoPath(current))) {
 			return current;
 		}
 
 		const parent = path.dirname(current);
 		if (parent === current) {
-			return null;
+			throw new Error('Cannot find Await bridge info. Run npx await-widget first.');
 		}
 
 		current = parent;
 	}
 }
 
-async function resolveWidgetServerRoots(start) {
-	const widgetRoot = path.resolve(start);
-	const packageRoot = findPackageRoot(widgetRoot);
-	if (
-		!packageRoot
-		|| !hasRuntimeDependency(packageRoot)
-	) {
-		throw new Error(widgetDirectoryError);
-	}
-
-	if (packageRoot === widgetRoot) {
-		return {packageRoot, widgetRoot: await selectWidgetRoot(packageRoot)};
-	}
-
-	if (path.dirname(widgetRoot) !== packageRoot || !isValidTopLevelName(path.basename(widgetRoot))) {
-		throw new Error(widgetDirectoryError);
-	}
-
-	return {packageRoot, widgetRoot};
-}
-
-function selectWidgetRoot(packageRoot) {
+function selectWidgetRoot(directory) {
 	const options = [
-		{name: `${path.basename(packageRoot)} (root)`, path: packageRoot},
-		...fs.readdirSync(packageRoot, {withFileTypes: true})
-			.filter(entry => entry.isDirectory() && isValidTopLevelName(entry.name))
+		{name: `${path.basename(directory)} (current directory)`, path: directory},
+		...fs.readdirSync(directory, {withFileTypes: true})
+			.filter(entry => entry.isDirectory() && isSelectableDirectoryName(entry.name))
 			.sort((left, right) => left.name.localeCompare(right.name))
-			.map(entry => ({name: entry.name, path: path.join(packageRoot, entry.name)})),
+			.map(entry => ({name: entry.name, path: path.join(directory, entry.name)})),
 	];
 	let selected = 0;
 	let rendered = false;
@@ -479,11 +455,6 @@ function selectWidgetRoot(packageRoot) {
 	});
 }
 
-function hasRuntimeDependency(packageRoot) {
-	const manifest = JSON.parse(fs.readFileSync(path.join(packageRoot, 'package.json'), 'utf8'));
-	return Boolean(manifest.dependencies?.['@await-widget/runtime'] ?? manifest.devDependencies?.['@await-widget/runtime']);
-}
-
 function listDesktopWidgets(root) {
 	return [{name: path.basename(root), path: singleWidgetPath}];
 }
@@ -518,7 +489,7 @@ function safeWidgetPath(root, widgetPath, options = {}) {
 	return root;
 }
 
-function isValidTopLevelName(name) {
+function isSelectableDirectoryName(name) {
 	return Boolean(name) && !name.includes('/') && !name.includes('\\') && !isExcludedName(name);
 }
 
@@ -766,19 +737,11 @@ function resolveBridgeUrl(options) {
 		return options.bridgeUrl;
 	}
 
-	const root = findPackageRoot(path.resolve(options.workspace ?? process.cwd()));
-	if (!root) {
-		throw new Error('Cannot find package.json for Await bridge lookup.');
-	}
-
+	const root = findBridgeRoot(options.workspace ?? process.cwd());
 	return readBridgeUrl(bridgeInfoPath(root));
 }
 
 function readBridgeUrl(infoPath) {
-	if (!fs.existsSync(infoPath)) {
-		throw new Error('Cannot find Await bridge info. Run npx await-widget first.');
-	}
-
 	const info = JSON.parse(fs.readFileSync(infoPath, 'utf8'));
 	return info.bridgeUrl;
 }
@@ -812,7 +775,8 @@ function appCommandResult(options, tool, result) {
 }
 
 function saveCapture(options, result) {
-	const root = findPackageRoot(options.workspace ? path.resolve(options.workspace) : process.cwd()) ?? process.cwd();
+	const workspace = path.resolve(options.workspace ?? process.cwd());
+	const root = options.bridgeUrl ? workspace : findBridgeRoot(workspace);
 	const directory = path.join(root, bridgeInfoDirectory, 'captures');
 	const name = safeCaptureFileName(String(result.widgetId ?? 'widget'));
 	const filePath = path.join(directory, `${name}-${Date.now()}.png`);
@@ -1021,14 +985,15 @@ function printHelp() {
   await-widget [--port ${defaultPort}]
   await-widget app <command> [options]
 
-Start the Await computer connection from a package root or first-level widget
-folder whose package.json includes @await-widget/runtime. Starting from the
-package root opens a directory selector.
+Start the Await computer connection from any directory. Choose the current
+directory or one of its direct subdirectories. No package.json or runtime
+dependency is required to start the connection.
 
 What it does:
   - Serves the selected widget folder to Await for live sync.
   - Prints a URL to paste into Await's Connect Computer sheet.
-  - Writes .await/bridge.json in the package root for app commands.
+  - Writes .await/bridge.json in the directory where the connection was started.
+  - App commands search the current directory and its parents for bridge info.
   - Sends one-shot JSON app commands with await-widget app <command>.
 
 Examples:
@@ -1040,7 +1005,7 @@ Examples:
   npx await-widget app get-recent-widget-logs --widget-id YourWidget
 
 App command options:
-  --workspace <path>     Read .await/bridge.json from another package/widget path.
+  --workspace <path>     Search this directory and its parents for .await/bridge.json.
   --bridge-url <url>     Send directly to a bridge URL instead of reading bridge.json.
   --json <json>          Merge raw JSON arguments into the app command.
 
