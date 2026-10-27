@@ -14,6 +14,13 @@ export declare function setInterval(
 export declare function sleep(ms: number): Promise<void>;
 export declare function clearInterval(timerID: unknown): void;
 export declare function print(...args: unknown[]): void;
+/**
+Returns whether two acyclic Encodable values are equal.
+Records compare their own enumerable string keys, ignoring key order and distinguishing missing keys from undefined values.
+Arrays compare their length and elements in order; empty slots are treated as undefined.
+Primitive values use strict equality, except that NaN equals NaN.
+*/
+export declare function compare(lhs: Encodable, rhs: Encodable): boolean;
 export declare const console: {
 	log(...args: unknown[]): void;
 };
@@ -104,6 +111,16 @@ export declare const AwaitFile: {
 		pages: number[],
 		pageSize: number,
 	): Array<string | undefined>;
+	renderText(
+		path: string,
+		request: TextRenderRequest,
+		layout: TextRenderLayout,
+	): TextRenderResult | undefined;
+	renderTexts(
+		path: string,
+		requests: TextRenderRequest[],
+		layout: TextRenderLayout,
+	): Array<TextRenderResult | undefined> | undefined;
 	saveUIRenderImage(path: string, value: NativeView): void;
 };
 export declare const AwaitAudio: {
@@ -215,6 +232,7 @@ declare global {
 	const AwaitFile: AwaitFileGlobal;
 	const AwaitAudio: AwaitAudioGlobal;
 	function print(...args: unknown[]): void;
+	function compare(lhs: Encodable, rhs: Encodable): boolean;
 	const sleep: SleepGlobal;
 }
 export {};

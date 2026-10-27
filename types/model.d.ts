@@ -429,3 +429,56 @@ type Timeline<T extends Record<string, unknown> = Record<string, unknown>> = {
 	update?: Update;
 	skipOnPlayingNote?: boolean;
 };
+
+type TextRenderLayout = {
+	width: number;
+	height: number;
+	fontSize: number;
+	fontWeight?: number;
+	fontWidth?: number;
+	lineHeight?: number;
+	lineSpacing?: number;
+	tracking?: number;
+	kerning?: number;
+	horizontalAlignment?: TextAlignment;
+	verticalAlignment?: 'top' | 'center' | 'bottom';
+} & (
+	| {
+			fontURL: string;
+			fontName?: never;
+			fontDesign?: FontDesign;
+	  }
+	| {
+			fontName: string;
+			fontURL?: never;
+			fontDesign?: FontDesign;
+	  }
+	| {
+			fontURL?: never;
+			fontName?: never;
+			fontDesign?: FontDesign;
+	  }
+);
+
+type TextRenderRequest = {
+	offset: number;
+	forward: boolean;
+};
+
+type TextRenderLine = {
+	range: [start: number, end: number];
+	baseline: number;
+};
+
+type TextRenderInput = TextRenderLayout & {
+	text: string;
+	lines?: TextRenderLine[];
+};
+
+type TextRenderResult = TextRenderLayout & {
+	text: string;
+	lines: TextRenderLine[];
+	startOffset: number;
+	endOffset: number;
+	totalBytes: number;
+};

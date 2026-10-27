@@ -14,17 +14,31 @@ type ProgressViewStyle = 'automatic' | 'linear' | 'circular';
 
 type Material = 'regular' | 'thin' | 'thick' | 'ultraThin' | 'ultraThick';
 
-type ShapeStyle =
-	| Color
-	| Material
-	| LinearGradient
-	| RadialGradient
-	| AngularGradient
+type Hierarchical =
 	| 'primary'
 	| 'secondary'
 	| 'tertiary'
 	| 'quaternary'
 	| 'quinary';
+
+type ShapeStyleEffects = {
+	/**
+	Applies Apple's native inner shadow to this style.
+	Uses the source alpha; fully transparent fills do not produce a visible inner shadow.
+	Shadow color defaults to black at 33% opacity; blur, x, and y default to 0.
+	*/
+	innerShadow?: Shadow;
+};
+
+/** The strings primary and secondary resolve as hierarchical styles in ShapeStyle positions. */
+type ShapeStyle =
+	| Color
+	| Material
+	| Hierarchical
+	| LinearGradient
+	| RadialGradient
+	| AngularGradient
+	| ({style: Color | Material | Hierarchical} & ShapeStyleEffects);
 
 type NativeAnimation = (
 	| {
@@ -127,7 +141,7 @@ type RadialGradient = {
 	stops?: Array<[Color, number]>;
 	startRadius?: number;
 	endRadius?: number;
-};
+} & ShapeStyleEffects;
 
 type AngularGradient = {
 	gradient: 'angular';
@@ -136,7 +150,7 @@ type AngularGradient = {
 	stops?: Array<[Color, number]>;
 	angle?: number;
 	center?: UnitPoint;
-};
+} & ShapeStyleEffects;
 
 type LinearGradient = {
 	gradient: 'linear';
@@ -145,7 +159,7 @@ type LinearGradient = {
 	stops?: Stop[];
 	startPoint?: UnitPoint;
 	endPoint?: UnitPoint;
-};
+} & ShapeStyleEffects;
 
 type UnitPoint =
 	| 'center'
@@ -506,3 +520,13 @@ type DateFormatToken =
 	| DateFormatFractionalSecondToken
 	| DateFormatAMPMToken
 	| DateFormatTimeZoneToken;
+
+type ImageStroke = {
+	color: Color;
+	/**
+		Outward width in points at the decoded image's natural size. Must be nonnegative.
+		Adds transparent space around the image; the image and stroke then resize together.
+		proposedSize includes the added space. Template rendering also recolors the stroke.
+		*/
+	width: number;
+};

@@ -409,6 +409,10 @@ function selectWidgetRoot(directory) {
 			.sort((left, right) => left.name.localeCompare(right.name))
 			.map(entry => ({name: entry.name, path: path.join(directory, entry.name)})),
 	];
+	if (options.length === 1) {
+		return directory;
+	}
+
 	let selected = 0;
 	let rendered = false;
 	readline.emitKeypressEvents(process.stdin);
@@ -985,9 +989,8 @@ function printHelp() {
   await-widget [--port ${defaultPort}]
   await-widget app <command> [options]
 
-Start the Await computer connection from any directory. Choose the current
-directory or one of its direct subdirectories. No package.json or runtime
-dependency is required to start the connection.
+Start the Await computer connection from any directory. If it has selectable
+subdirectories, choose the current directory or one of them.
 
 What it does:
   - Serves the selected widget folder to Await for live sync.

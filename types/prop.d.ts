@@ -117,6 +117,11 @@ type TextValue = {
 	value?: Encodable;
 };
 
+type TextRenderValue = {
+	value: TextRenderInput;
+	fill?: ShapeStyle;
+};
+
 type GaugeValue = {
 	/** Number value in range 0~1. */
 	value?: number;
@@ -125,6 +130,8 @@ type GaugeValue = {
 type ImageValue = {
 	/** Local or remote path such as `img.png` `path/img.png` `https://example.com/img.png` */
 	url?: string;
+	/** Adds a round outer stroke along the image's alpha contour, including transparent holes. */
+	stroke?: ImageStroke;
 	/** The modes used to resize an image to fit within its containing view. */
 	resizable?: Resizable;
 	/** The level of quality for rendering an image that requires interpolation, such as a scaled image. */
@@ -133,7 +140,7 @@ type ImageValue = {
 	style?: TemplateRenderingMode;
 	/** The mode that indicates how images are rendered on widget accented mode */
 	accented?: Accented;
-	/** The maximum number of pixels along the image's longest edge. Defaults to 1000. */
+	/** Decimals are truncated toward zero; negative values become 0. Positive integers limit image area to approximately maxPixel squared pixels. Use 0 for no limit, preserving source pixel dimensions. Defaults to 1000. */
 	maxPixel?: number;
 	/** Maximum width and height for the image's natural layout size. Scales down proportionally. */
 	proposedSize?: {width?: number; height?: number};
@@ -344,6 +351,7 @@ type BaseMods = {
 		  };
 	saturation?: number;
 	scaleEffect?: ScaleEffect;
+	/** Ordinary outer shadow. For an inner shadow, set innerShadow on a ShapeStyle. */
 	shadow?: Shadow;
 	sides?: number;
 	strikethrough?:

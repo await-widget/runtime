@@ -10,293 +10,305 @@ declare module 'await' {
 		props: Props,
 	) => NativeView;
 	/** This is an experimental component and may change in the future. */
-	export function Scroll(
+	export const Scroll: (
 		props: ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
-	export function VStack(
+	) => NativeView;
+	export const VStack: (
 		props: VStackValue &
 			ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
-	export function HStack(
+	) => NativeView;
+	export const HStack: (
 		props: HStackValue &
 			ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
-	export function Flow(
+	) => NativeView;
+	export const Flow: (
 		props: FlowValue &
 			ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
-	export function ZStack(
+	) => NativeView;
+	export const ZStack: (
 		props: ZStackValue &
 			ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Opens a custom-scheme URL or universal link through the Await app when tapped. */
-	export function Link(
+	export const Link: (
 		props: LinkValue &
 			ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
+	) => NativeView;
 	/** When tapped, runs an intent or opens a universal link directly without going through the Await app. */
-	export function Button(
+	export const Button: (
 		props: ButtonValue &
 			ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Displays a solid color and expands to fill the available space. */
-	export function Color(
+	export const Color: (
 		props: ColorValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Displays text and can contain nested `Text` or `Image` views. */
-	export function Text(
+	export const Text: (
 		props: TextValue &
 			ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
+	) => NativeView;
+	/**
+Displays text in a fixed area, or as a rendered image when fontURL is set.
+Without lines, lays out as much text as fits in the fixed area.
+Supplied lines are drawn directly, including an empty array that draws no lines.
+*/
+	export const TextRender: (
+		props: TextRenderValue &
+			ID &
+			Mods & {
+				children?: never;
+			},
+	) => NativeView;
 	/** Displays an automatically updating clock, countdown/count-up timer, or stopwatch. */
-	export function Time(
+	export const Time: (
 		props: TimeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
-	export function ProgressView(
+	) => NativeView;
+	export const ProgressView: (
 		props: ProgressViewValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
-	export function Gauge(
+	) => NativeView;
+	export const Gauge: (
 		props: GaugeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Displays an image from a local or remote path, or renders child views as an image. Avoid large or complex child content due to system limits. */
-	export function Image(
+	export const Image: (
 		props: ImageValue &
 			ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Displays a system SF Symbol. */
-	export function Icon(
+	export const Icon: (
 		props: IconValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Displays an SVG from a local or remote path, or from raw SVG markup. */
-	export function Svg(
+	export const Svg: (
 		props: SvgValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Draws a rounded rectangle that expands to fill the available space. */
-	export function RoundedRectangle(
+	export const RoundedRectangle: (
 		props: RoundedRectangleValue &
 			ShapeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Draws a rounded rectangle with independently configurable corners that expands to fill the available space. */
-	export function UnevenRoundedRectangle(
+	export const UnevenRoundedRectangle: (
 		props: UnevenRoundedRectangleValue &
 			ShapeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Draws a rectangle that expands to fill the available space. */
-	export function Rectangle(
+	export const Rectangle: (
 		props: ShapeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Draws a circular sector that expands to fill the available space. */
-	export function Sector(
+	export const Sector: (
 		props: SectorValue &
 			ShapeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Draws an ellipse that expands to fill the available space. */
-	export function Ellipse(
+	export const Ellipse: (
 		props: ShapeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Draws a circle that expands to fill the available space. */
-	export function Circle(
+	export const Circle: (
 		props: ShapeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Draws a polygon that expands to fill the available space. */
-	export function Polygon(
+	export const Polygon: (
 		props: PolygonValue &
 			ShapeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Draws a diamond that expands to fill the available space. */
-	export function Diamond(
+	export const Diamond: (
 		props: ShapeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Draws a capsule that expands to fill the available space. */
-	export function Capsule(
+	export const Capsule: (
 		props: CapsuleValue &
 			ShapeValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Adds flexible space within an `HStack` or `VStack`, expanding to fill the available space. */
-	export function Spacer(
+	export const Spacer: (
 		props: SpacerValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
-	export function Group(
+	) => NativeView;
+	export const Group: (
 		props: ID &
 			Mods & {
 				children?: NativeView;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Creates a modifier for use in a `CustomButtonStyle`. */
-	export function Modifier(
+	export const Modifier: (
 		props: ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
-	export function EmptyView(
+	) => NativeView;
+	export const EmptyView: (
 		props: ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Creates a transparent button that expands to fill the available space. */
-	export function FullButton(
+	export const FullButton: (
 		props: ButtonValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Displays a random number for debugging. */
-	export function Stamp(
+	export const Stamp: (
 		props: ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Creates a vertical page-flip effect. */
-	export function VFlip(
+	export const VFlip: (
 		props: FlipValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Creates a horizontal page-flip effect. */
-	export function HFlip(
+	export const HFlip: (
 		props: FlipValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Creates a flip transition around the x-axis. */
-	export function XFlip(
+	export const XFlip: (
 		props: AxisFlipValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Creates a flip transition around the y-axis. */
-	export function YFlip(
+	export const YFlip: (
 		props: AxisFlipValue &
 			ID &
 			Mods & {
 				children?: never;
 			},
-	): NativeView;
+	) => NativeView;
 	/** Creates a GIF-like animation with limited system support. Only specific durations are available, transparency is not supported directly, and frame dimensions and count should remain small. */
-	export function Gif(
+	export const Gif: (
 		props: GifValue &
 			ID &
 			Mods & {
 				children: NativeView[];
 			},
-	): NativeView;
+	) => NativeView;
 	/** Cycles through a sequence of views based on the selected time unit, enabling effects such as a ticking second hand. Available on iOS 26 and later. */
-	export function Ticker(
+	export const Ticker: (
 		props: TickerValue &
 			ID &
 			Mods & {
 				children: NativeView[];
 			},
-	): NativeView;
+	) => NativeView;
 	/** Flashes once per second in a 60-second cycle, achieving the effect of a ticking second hand. Available on iOS 18 and later. */
-	export function FlashTicker(
+	export const FlashTicker: (
 		props: FlashTickerValue &
 			ID &
 			Mods & {
 				children: NativeView[];
 			},
-	): NativeView;
+	) => NativeView;
 }
 
 declare module 'await/jsx-runtime' {
