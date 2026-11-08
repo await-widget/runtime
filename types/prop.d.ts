@@ -15,14 +15,16 @@ type HStackValue = {
 };
 
 type FlowValue = {
-	/** Default 0. */
+	/** Default 0. Minimum item spacing when justified is enabled. */
 	spacing?: number;
 	/** Default 0. */
 	rowSpacing?: number;
 	/** Vertical alignment for items within each row. */
 	alignment?: VerticalAlignment;
-	/** Horizontal alignment for each row when its contents do not fill the available width. */
+	/** Horizontal alignment for each row. Single-item rows use this alignment even when justified is enabled. */
 	rowAlignment?: 'leading' | 'center' | 'trailing';
+	/** Spreads rows with multiple items edge-to-edge. Default false. */
+	justified?: boolean;
 };
 
 type ZStackValue = {

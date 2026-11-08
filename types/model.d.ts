@@ -438,6 +438,7 @@ type TextRenderLayout = {
 	fontWidth?: number;
 	lineHeight?: number;
 	lineSpacing?: number;
+	paragraphHeadIndent?: number;
 	tracking?: number;
 	kerning?: number;
 	horizontalAlignment?: TextAlignment;
@@ -468,6 +469,7 @@ type TextRenderRequest = {
 type TextRenderLine = {
 	range: [start: number, end: number];
 	baseline: number;
+	indent?: number;
 };
 
 type TextRenderInput = TextRenderLayout & {
